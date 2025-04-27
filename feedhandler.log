@@ -1,0 +1,1159 @@
+2025-04-04 13:42:43,852 : ERROR : BINANCE_FUTURES.http.1.http.1: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\aiodns\__init__.py", line 58, in __init__
+    import winloop
+ModuleNotFoundError: No module named 'winloop'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 56, in _create_connection
+    async with self.conn.connect() as connection:
+  File "C:\Users\Aravind\anaconda3\lib\contextlib.py", line 181, in __aenter__
+    return await self.gen.__anext__()
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection.py", line 109, in connect
+    await self._open()
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection.py", line 157, in _open
+    self.conn = aiohttp.ClientSession()
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\aiohttp\client.py", line 359, in __init__
+    connector = TCPConnector(loop=loop)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\aiohttp\connector.py", line 869, in __init__
+    resolver = DefaultResolver(loop=self._loop)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\aiohttp\resolver.py", line 96, in __init__
+    self._resolver = aiodns.DNSResolver(*args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\aiodns\__init__.py", line 63, in __init__
+    raise RuntimeError(
+RuntimeError: aiodns needs a SelectorEventLoop on Windows. See more: https://github.com/saghul/aiodns/issues/86
+2025-04-04 13:42:44,876 : ERROR : BINANCE_FUTURES.http.1.http.1: encountered an exception, reconnecting in 2.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\aiodns\__init__.py", line 58, in __init__
+    import winloop
+ModuleNotFoundError: No module named 'winloop'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 56, in _create_connection
+    async with self.conn.connect() as connection:
+  File "C:\Users\Aravind\anaconda3\lib\contextlib.py", line 181, in __aenter__
+    return await self.gen.__anext__()
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection.py", line 109, in connect
+    await self._open()
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection.py", line 157, in _open
+    self.conn = aiohttp.ClientSession()
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\aiohttp\client.py", line 359, in __init__
+    connector = TCPConnector(loop=loop)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\aiohttp\connector.py", line 869, in __init__
+    resolver = DefaultResolver(loop=self._loop)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\aiohttp\resolver.py", line 96, in __init__
+    self._resolver = aiodns.DNSResolver(*args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\aiodns\__init__.py", line 63, in __init__
+    raise RuntimeError(
+RuntimeError: aiodns needs a SelectorEventLoop on Windows. See more: https://github.com/saghul/aiodns/issues/86
+2025-04-04 13:42:46,891 : ERROR : BINANCE_FUTURES.http.1.http.1: encountered an exception, reconnecting in 4.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\aiodns\__init__.py", line 58, in __init__
+    import winloop
+ModuleNotFoundError: No module named 'winloop'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 56, in _create_connection
+    async with self.conn.connect() as connection:
+  File "C:\Users\Aravind\anaconda3\lib\contextlib.py", line 181, in __aenter__
+    return await self.gen.__anext__()
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection.py", line 109, in connect
+    await self._open()
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection.py", line 157, in _open
+    self.conn = aiohttp.ClientSession()
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\aiohttp\client.py", line 359, in __init__
+    connector = TCPConnector(loop=loop)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\aiohttp\connector.py", line 869, in __init__
+    resolver = DefaultResolver(loop=self._loop)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\aiohttp\resolver.py", line 96, in __init__
+    self._resolver = aiodns.DNSResolver(*args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\aiodns\__init__.py", line 63, in __init__
+    raise RuntimeError(
+RuntimeError: aiodns needs a SelectorEventLoop on Windows. See more: https://github.com/saghul/aiodns/issues/86
+2025-04-04 13:42:50,901 : ERROR : BINANCE_FUTURES.http.1.http.1: encountered an exception, reconnecting in 8.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\aiodns\__init__.py", line 58, in __init__
+    import winloop
+ModuleNotFoundError: No module named 'winloop'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 56, in _create_connection
+    async with self.conn.connect() as connection:
+  File "C:\Users\Aravind\anaconda3\lib\contextlib.py", line 181, in __aenter__
+    return await self.gen.__anext__()
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection.py", line 109, in connect
+    await self._open()
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection.py", line 157, in _open
+    self.conn = aiohttp.ClientSession()
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\aiohttp\client.py", line 359, in __init__
+    connector = TCPConnector(loop=loop)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\aiohttp\connector.py", line 869, in __init__
+    resolver = DefaultResolver(loop=self._loop)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\aiohttp\resolver.py", line 96, in __init__
+    self._resolver = aiodns.DNSResolver(*args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\aiodns\__init__.py", line 63, in __init__
+    raise RuntimeError(
+RuntimeError: aiodns needs a SelectorEventLoop on Windows. See more: https://github.com/saghul/aiodns/issues/86
+2025-04-04 13:42:52,016 : ERROR : BINANCE_FUTURES.ws.2: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 265, in message_handler
+    await self._trade(msg, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance.py", line 195, in _trade
+    await self.callback(TRADES, t, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\trading-backend\candles.py", line 31, in trade_callback
+    await trade_mongo.write(CANDLES_COLLECTION, list(candle_data.values()))
+TypeError: write() takes 2 positional arguments but 3 were given
+2025-04-04 13:42:58,914 : ERROR : BINANCE_FUTURES.http.1.http.1: encountered an exception, reconnecting in 16.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\aiodns\__init__.py", line 58, in __init__
+    import winloop
+ModuleNotFoundError: No module named 'winloop'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 56, in _create_connection
+    async with self.conn.connect() as connection:
+  File "C:\Users\Aravind\anaconda3\lib\contextlib.py", line 181, in __aenter__
+    return await self.gen.__anext__()
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection.py", line 109, in connect
+    await self._open()
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection.py", line 157, in _open
+    self.conn = aiohttp.ClientSession()
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\aiohttp\client.py", line 359, in __init__
+    connector = TCPConnector(loop=loop)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\aiohttp\connector.py", line 869, in __init__
+    resolver = DefaultResolver(loop=self._loop)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\aiohttp\resolver.py", line 96, in __init__
+    self._resolver = aiodns.DNSResolver(*args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\aiodns\__init__.py", line 63, in __init__
+    raise RuntimeError(
+RuntimeError: aiodns needs a SelectorEventLoop on Windows. See more: https://github.com/saghul/aiodns/issues/86
+2025-04-04 13:43:00,581 : ERROR : BINANCE_FUTURES.ws.2: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 265, in message_handler
+    await self._trade(msg, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance.py", line 195, in _trade
+    await self.callback(TRADES, t, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\trading-backend\candles.py", line 31, in trade_callback
+    await trade_mongo.write(CANDLES_COLLECTION, list(candle_data.values()))
+TypeError: write() takes 2 positional arguments but 3 were given
+2025-04-04 13:43:08,015 : ERROR : BINANCE_FUTURES.ws.2: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 265, in message_handler
+    await self._trade(msg, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance.py", line 195, in _trade
+    await self.callback(TRADES, t, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\trading-backend\candles.py", line 31, in trade_callback
+    await trade_mongo.write(CANDLES_COLLECTION, list(candle_data.values()))
+TypeError: write() takes 2 positional arguments but 3 were given
+2025-04-04 13:43:14,915 : ERROR : BINANCE_FUTURES.http.1.http.1: encountered an exception, reconnecting in 32.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\aiodns\__init__.py", line 58, in __init__
+    import winloop
+ModuleNotFoundError: No module named 'winloop'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 56, in _create_connection
+    async with self.conn.connect() as connection:
+  File "C:\Users\Aravind\anaconda3\lib\contextlib.py", line 181, in __aenter__
+    return await self.gen.__anext__()
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection.py", line 109, in connect
+    await self._open()
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection.py", line 157, in _open
+    self.conn = aiohttp.ClientSession()
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\aiohttp\client.py", line 359, in __init__
+    connector = TCPConnector(loop=loop)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\aiohttp\connector.py", line 869, in __init__
+    resolver = DefaultResolver(loop=self._loop)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\aiohttp\resolver.py", line 96, in __init__
+    self._resolver = aiodns.DNSResolver(*args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\aiodns\__init__.py", line 63, in __init__
+    raise RuntimeError(
+RuntimeError: aiodns needs a SelectorEventLoop on Windows. See more: https://github.com/saghul/aiodns/issues/86
+2025-04-04 13:43:14,917 : ERROR : BINANCE_FUTURES.ws.2: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 265, in message_handler
+    await self._trade(msg, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance.py", line 195, in _trade
+    await self.callback(TRADES, t, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\trading-backend\candles.py", line 31, in trade_callback
+    await trade_mongo.write(CANDLES_COLLECTION, list(candle_data.values()))
+TypeError: write() takes 2 positional arguments but 3 were given
+2025-04-04 13:43:21,918 : ERROR : BINANCE_FUTURES.ws.2: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 265, in message_handler
+    await self._trade(msg, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance.py", line 195, in _trade
+    await self.callback(TRADES, t, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\trading-backend\candles.py", line 31, in trade_callback
+    await trade_mongo.write(CANDLES_COLLECTION, list(candle_data.values()))
+TypeError: write() takes 2 positional arguments but 3 were given
+2025-04-04 13:58:22,129 : ERROR : BINANCE_FUTURES.http.1.http.1: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 241, in message_handler
+    return await self._open_interest(msg, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 96, in _open_interest
+    await self.callback(OPEN_INTEREST, o, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\trading-backend\candles.py", line 78, in open_interest_callback
+    open_interest_collection.insert_one(open_interest_data)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 891, in insert_one
+    self._insert_one(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 831, in _insert_one
+    self._database.client._retryable_write(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1896, in _retryable_write
+    return self._retry_with_session(retryable, func, s, bulk, operation, operation_id)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1782, in _retry_with_session
+    return self._retry_internal(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\_csot.py", line 119, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1817, in _retry_internal
+    return _ClientConnectionRetryable(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2565, in run
+    return self._read() if self._is_read else self._write()
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2687, in _write
+    return self._func(self._session, conn, self._retryable)  # type: ignore
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 819, in _insert_command
+    result = conn.command(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\helpers.py", line 47, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\pool.py", line 564, in command
+    self._raise_connection_failure(error)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\pool.py", line 536, in command
+    return command(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\network.py", line 153, in command
+    request_id, msg, size, max_doc_size = message._op_msg(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\message.py", line 419, in _op_msg
+    return _op_msg_uncompressed(flags, command, identifier, docs, opts)
+bson.errors.InvalidDocument: Invalid document {'timestamp': datetime.datetime(2025, 4, 4, 8, 28, 20, 243000), 'open_interest': Decimal('71152.363'), '_id': ObjectId('67ef982671af5813907764b5')} | cannot encode object: Decimal('71152.363'), of type: <class 'decimal.Decimal'>
+2025-04-04 13:58:23,446 : ERROR : BINANCE_FUTURES.http.1.http.1: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 241, in message_handler
+    return await self._open_interest(msg, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 96, in _open_interest
+    await self.callback(OPEN_INTEREST, o, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\trading-backend\candles.py", line 78, in open_interest_callback
+    open_interest_collection.insert_one(open_interest_data)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 891, in insert_one
+    self._insert_one(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 831, in _insert_one
+    self._database.client._retryable_write(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1896, in _retryable_write
+    return self._retry_with_session(retryable, func, s, bulk, operation, operation_id)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1782, in _retry_with_session
+    return self._retry_internal(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\_csot.py", line 119, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1817, in _retry_internal
+    return _ClientConnectionRetryable(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2565, in run
+    return self._read() if self._is_read else self._write()
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2687, in _write
+    return self._func(self._session, conn, self._retryable)  # type: ignore
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 819, in _insert_command
+    result = conn.command(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\helpers.py", line 47, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\pool.py", line 564, in command
+    self._raise_connection_failure(error)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\pool.py", line 536, in command
+    return command(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\network.py", line 153, in command
+    request_id, msg, size, max_doc_size = message._op_msg(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\message.py", line 419, in _op_msg
+    return _op_msg_uncompressed(flags, command, identifier, docs, opts)
+bson.errors.InvalidDocument: Invalid document {'timestamp': datetime.datetime(2025, 4, 4, 8, 28, 23, 542000), 'open_interest': Decimal('71150.936'), '_id': ObjectId('67ef982771af5813907764b7')} | cannot encode object: Decimal('71150.936'), of type: <class 'decimal.Decimal'>
+2025-04-04 13:58:24,694 : ERROR : BINANCE_FUTURES.http.1.http.1: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 241, in message_handler
+    return await self._open_interest(msg, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 96, in _open_interest
+    await self.callback(OPEN_INTEREST, o, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\trading-backend\candles.py", line 78, in open_interest_callback
+    open_interest_collection.insert_one(open_interest_data)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 891, in insert_one
+    self._insert_one(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 831, in _insert_one
+    self._database.client._retryable_write(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1896, in _retryable_write
+    return self._retry_with_session(retryable, func, s, bulk, operation, operation_id)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1782, in _retry_with_session
+    return self._retry_internal(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\_csot.py", line 119, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1817, in _retry_internal
+    return _ClientConnectionRetryable(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2565, in run
+    return self._read() if self._is_read else self._write()
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2687, in _write
+    return self._func(self._session, conn, self._retryable)  # type: ignore
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 819, in _insert_command
+    result = conn.command(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\helpers.py", line 47, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\pool.py", line 564, in command
+    self._raise_connection_failure(error)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\pool.py", line 536, in command
+    return command(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\network.py", line 153, in command
+    request_id, msg, size, max_doc_size = message._op_msg(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\message.py", line 419, in _op_msg
+    return _op_msg_uncompressed(flags, command, identifier, docs, opts)
+bson.errors.InvalidDocument: Invalid document {'timestamp': datetime.datetime(2025, 4, 4, 8, 28, 23, 542000), 'open_interest': Decimal('71150.936'), '_id': ObjectId('67ef982871af5813907764b8')} | cannot encode object: Decimal('71150.936'), of type: <class 'decimal.Decimal'>
+2025-04-04 13:58:26,018 : ERROR : BINANCE_FUTURES.http.1.http.1: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 241, in message_handler
+    return await self._open_interest(msg, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 96, in _open_interest
+    await self.callback(OPEN_INTEREST, o, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\trading-backend\candles.py", line 78, in open_interest_callback
+    open_interest_collection.insert_one(open_interest_data)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 891, in insert_one
+    self._insert_one(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 831, in _insert_one
+    self._database.client._retryable_write(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1896, in _retryable_write
+    return self._retry_with_session(retryable, func, s, bulk, operation, operation_id)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1782, in _retry_with_session
+    return self._retry_internal(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\_csot.py", line 119, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1817, in _retry_internal
+    return _ClientConnectionRetryable(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2565, in run
+    return self._read() if self._is_read else self._write()
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2687, in _write
+    return self._func(self._session, conn, self._retryable)  # type: ignore
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 819, in _insert_command
+    result = conn.command(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\helpers.py", line 47, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\pool.py", line 564, in command
+    self._raise_connection_failure(error)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\pool.py", line 536, in command
+    return command(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\network.py", line 153, in command
+    request_id, msg, size, max_doc_size = message._op_msg(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\message.py", line 419, in _op_msg
+    return _op_msg_uncompressed(flags, command, identifier, docs, opts)
+bson.errors.InvalidDocument: Invalid document {'timestamp': datetime.datetime(2025, 4, 4, 8, 28, 27, 369000), 'open_interest': Decimal('71150.132'), '_id': ObjectId('67ef982a71af5813907764b9')} | cannot encode object: Decimal('71150.132'), of type: <class 'decimal.Decimal'>
+2025-04-04 13:58:27,295 : ERROR : BINANCE_FUTURES.http.1.http.1: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 241, in message_handler
+    return await self._open_interest(msg, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 96, in _open_interest
+    await self.callback(OPEN_INTEREST, o, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\trading-backend\candles.py", line 78, in open_interest_callback
+    open_interest_collection.insert_one(open_interest_data)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 891, in insert_one
+    self._insert_one(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 831, in _insert_one
+    self._database.client._retryable_write(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1896, in _retryable_write
+    return self._retry_with_session(retryable, func, s, bulk, operation, operation_id)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1782, in _retry_with_session
+    return self._retry_internal(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\_csot.py", line 119, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1817, in _retry_internal
+    return _ClientConnectionRetryable(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2565, in run
+    return self._read() if self._is_read else self._write()
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2687, in _write
+    return self._func(self._session, conn, self._retryable)  # type: ignore
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 819, in _insert_command
+    result = conn.command(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\helpers.py", line 47, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\pool.py", line 564, in command
+    self._raise_connection_failure(error)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\pool.py", line 536, in command
+    return command(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\network.py", line 153, in command
+    request_id, msg, size, max_doc_size = message._op_msg(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\message.py", line 419, in _op_msg
+    return _op_msg_uncompressed(flags, command, identifier, docs, opts)
+bson.errors.InvalidDocument: Invalid document {'timestamp': datetime.datetime(2025, 4, 4, 8, 28, 27, 369000), 'open_interest': Decimal('71150.132'), '_id': ObjectId('67ef982b71af5813907764ba')} | cannot encode object: Decimal('71150.132'), of type: <class 'decimal.Decimal'>
+2025-04-04 13:58:28,485 : ERROR : BINANCE_FUTURES.ws.2: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 265, in message_handler
+    await self._trade(msg, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance.py", line 195, in _trade
+    await self.callback(TRADES, t, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\trading-backend\candles.py", line 48, in trade_callback
+    candles_collection.insert_one(next(iter(candle_data.values())))  # Insert last stored candle
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 891, in insert_one
+    self._insert_one(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 831, in _insert_one
+    self._database.client._retryable_write(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1896, in _retryable_write
+    return self._retry_with_session(retryable, func, s, bulk, operation, operation_id)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1782, in _retry_with_session
+    return self._retry_internal(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\_csot.py", line 119, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1817, in _retry_internal
+    return _ClientConnectionRetryable(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2565, in run
+    return self._read() if self._is_read else self._write()
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2687, in _write
+    return self._func(self._session, conn, self._retryable)  # type: ignore
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 819, in _insert_command
+    result = conn.command(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\helpers.py", line 47, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\pool.py", line 564, in command
+    self._raise_connection_failure(error)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\pool.py", line 536, in command
+    return command(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\network.py", line 153, in command
+    request_id, msg, size, max_doc_size = message._op_msg(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\message.py", line 419, in _op_msg
+    return _op_msg_uncompressed(flags, command, identifier, docs, opts)
+bson.errors.InvalidDocument: Invalid document {'timestamp': datetime.datetime(2025, 4, 4, 8, 28, 26), 'open': Decimal('84439.10'), 'high': Decimal('84439.10'), 'low': Decimal('84439.10'), 'close': Decimal('84439.10'), 'volume': Decimal('0.034'), '_id': ObjectId('67ef982771af5813907764b6')} | cannot encode object: Decimal('84439.10'), of type: <class 'decimal.Decimal'>
+2025-04-04 13:58:28,544 : ERROR : BINANCE_FUTURES.http.1.http.1: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 241, in message_handler
+    return await self._open_interest(msg, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 96, in _open_interest
+    await self.callback(OPEN_INTEREST, o, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\trading-backend\candles.py", line 78, in open_interest_callback
+    open_interest_collection.insert_one(open_interest_data)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 891, in insert_one
+    self._insert_one(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 831, in _insert_one
+    self._database.client._retryable_write(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1896, in _retryable_write
+    return self._retry_with_session(retryable, func, s, bulk, operation, operation_id)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1782, in _retry_with_session
+    return self._retry_internal(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\_csot.py", line 119, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1817, in _retry_internal
+    return _ClientConnectionRetryable(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2565, in run
+    return self._read() if self._is_read else self._write()
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2687, in _write
+    return self._func(self._session, conn, self._retryable)  # type: ignore
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 819, in _insert_command
+    result = conn.command(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\helpers.py", line 47, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\pool.py", line 564, in command
+    self._raise_connection_failure(error)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\pool.py", line 536, in command
+    return command(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\network.py", line 153, in command
+    request_id, msg, size, max_doc_size = message._op_msg(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\message.py", line 419, in _op_msg
+    return _op_msg_uncompressed(flags, command, identifier, docs, opts)
+bson.errors.InvalidDocument: Invalid document {'timestamp': datetime.datetime(2025, 4, 4, 8, 28, 31, 105000), 'open_interest': Decimal('71147.325'), '_id': ObjectId('67ef982c71af5813907764bb')} | cannot encode object: Decimal('71147.325'), of type: <class 'decimal.Decimal'>
+2025-04-04 13:58:29,804 : ERROR : BINANCE_FUTURES.http.1.http.1: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 241, in message_handler
+    return await self._open_interest(msg, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 96, in _open_interest
+    await self.callback(OPEN_INTEREST, o, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\trading-backend\candles.py", line 78, in open_interest_callback
+    open_interest_collection.insert_one(open_interest_data)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 891, in insert_one
+    self._insert_one(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 831, in _insert_one
+    self._database.client._retryable_write(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1896, in _retryable_write
+    return self._retry_with_session(retryable, func, s, bulk, operation, operation_id)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1782, in _retry_with_session
+    return self._retry_internal(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\_csot.py", line 119, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1817, in _retry_internal
+    return _ClientConnectionRetryable(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2565, in run
+    return self._read() if self._is_read else self._write()
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2687, in _write
+    return self._func(self._session, conn, self._retryable)  # type: ignore
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 819, in _insert_command
+    result = conn.command(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\helpers.py", line 47, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\pool.py", line 564, in command
+    self._raise_connection_failure(error)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\pool.py", line 536, in command
+    return command(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\network.py", line 153, in command
+    request_id, msg, size, max_doc_size = message._op_msg(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\message.py", line 419, in _op_msg
+    return _op_msg_uncompressed(flags, command, identifier, docs, opts)
+bson.errors.InvalidDocument: Invalid document {'timestamp': datetime.datetime(2025, 4, 4, 8, 28, 31, 105000), 'open_interest': Decimal('71147.325'), '_id': ObjectId('67ef982d71af5813907764bc')} | cannot encode object: Decimal('71147.325'), of type: <class 'decimal.Decimal'>
+2025-04-04 13:58:31,043 : ERROR : BINANCE_FUTURES.http.1.http.1: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 241, in message_handler
+    return await self._open_interest(msg, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 96, in _open_interest
+    await self.callback(OPEN_INTEREST, o, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\trading-backend\candles.py", line 78, in open_interest_callback
+    open_interest_collection.insert_one(open_interest_data)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 891, in insert_one
+    self._insert_one(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 831, in _insert_one
+    self._database.client._retryable_write(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1896, in _retryable_write
+    return self._retry_with_session(retryable, func, s, bulk, operation, operation_id)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1782, in _retry_with_session
+    return self._retry_internal(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\_csot.py", line 119, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1817, in _retry_internal
+    return _ClientConnectionRetryable(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2565, in run
+    return self._read() if self._is_read else self._write()
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2687, in _write
+    return self._func(self._session, conn, self._retryable)  # type: ignore
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 819, in _insert_command
+    result = conn.command(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\helpers.py", line 47, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\pool.py", line 564, in command
+    self._raise_connection_failure(error)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\pool.py", line 536, in command
+    return command(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\network.py", line 153, in command
+    request_id, msg, size, max_doc_size = message._op_msg(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\message.py", line 419, in _op_msg
+    return _op_msg_uncompressed(flags, command, identifier, docs, opts)
+bson.errors.InvalidDocument: Invalid document {'timestamp': datetime.datetime(2025, 4, 4, 8, 28, 31, 105000), 'open_interest': Decimal('71147.325'), '_id': ObjectId('67ef982f71af5813907764bd')} | cannot encode object: Decimal('71147.325'), of type: <class 'decimal.Decimal'>
+2025-04-04 13:58:32,306 : ERROR : BINANCE_FUTURES.http.1.http.1: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 241, in message_handler
+    return await self._open_interest(msg, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 96, in _open_interest
+    await self.callback(OPEN_INTEREST, o, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\trading-backend\candles.py", line 78, in open_interest_callback
+    open_interest_collection.insert_one(open_interest_data)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 891, in insert_one
+    self._insert_one(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 831, in _insert_one
+    self._database.client._retryable_write(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1896, in _retryable_write
+    return self._retry_with_session(retryable, func, s, bulk, operation, operation_id)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1782, in _retry_with_session
+    return self._retry_internal(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\_csot.py", line 119, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1817, in _retry_internal
+    return _ClientConnectionRetryable(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2565, in run
+    return self._read() if self._is_read else self._write()
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2687, in _write
+    return self._func(self._session, conn, self._retryable)  # type: ignore
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 819, in _insert_command
+    result = conn.command(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\helpers.py", line 47, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\pool.py", line 564, in command
+    self._raise_connection_failure(error)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\pool.py", line 536, in command
+    return command(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\network.py", line 153, in command
+    request_id, msg, size, max_doc_size = message._op_msg(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\message.py", line 419, in _op_msg
+    return _op_msg_uncompressed(flags, command, identifier, docs, opts)
+bson.errors.InvalidDocument: Invalid document {'timestamp': datetime.datetime(2025, 4, 4, 8, 28, 31, 105000), 'open_interest': Decimal('71147.325'), '_id': ObjectId('67ef983071af5813907764be')} | cannot encode object: Decimal('71147.325'), of type: <class 'decimal.Decimal'>
+2025-04-04 13:58:33,544 : ERROR : BINANCE_FUTURES.http.1.http.1: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 241, in message_handler
+    return await self._open_interest(msg, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 96, in _open_interest
+    await self.callback(OPEN_INTEREST, o, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\trading-backend\candles.py", line 78, in open_interest_callback
+    open_interest_collection.insert_one(open_interest_data)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 891, in insert_one
+    self._insert_one(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 831, in _insert_one
+    self._database.client._retryable_write(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1896, in _retryable_write
+    return self._retry_with_session(retryable, func, s, bulk, operation, operation_id)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1782, in _retry_with_session
+    return self._retry_internal(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\_csot.py", line 119, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1817, in _retry_internal
+    return _ClientConnectionRetryable(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2565, in run
+    return self._read() if self._is_read else self._write()
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2687, in _write
+    return self._func(self._session, conn, self._retryable)  # type: ignore
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 819, in _insert_command
+    result = conn.command(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\helpers.py", line 47, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\pool.py", line 564, in command
+    self._raise_connection_failure(error)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\pool.py", line 536, in command
+    return command(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\network.py", line 153, in command
+    request_id, msg, size, max_doc_size = message._op_msg(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\message.py", line 419, in _op_msg
+    return _op_msg_uncompressed(flags, command, identifier, docs, opts)
+bson.errors.InvalidDocument: Invalid document {'timestamp': datetime.datetime(2025, 4, 4, 8, 28, 31, 105000), 'open_interest': Decimal('71147.325'), '_id': ObjectId('67ef983171af5813907764bf')} | cannot encode object: Decimal('71147.325'), of type: <class 'decimal.Decimal'>
+2025-04-04 13:58:34,781 : ERROR : BINANCE_FUTURES.http.1.http.1: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 241, in message_handler
+    return await self._open_interest(msg, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 96, in _open_interest
+    await self.callback(OPEN_INTEREST, o, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\trading-backend\candles.py", line 78, in open_interest_callback
+    open_interest_collection.insert_one(open_interest_data)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 891, in insert_one
+    self._insert_one(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 831, in _insert_one
+    self._database.client._retryable_write(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1896, in _retryable_write
+    return self._retry_with_session(retryable, func, s, bulk, operation, operation_id)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1782, in _retry_with_session
+    return self._retry_internal(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\_csot.py", line 119, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1817, in _retry_internal
+    return _ClientConnectionRetryable(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2565, in run
+    return self._read() if self._is_read else self._write()
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2687, in _write
+    return self._func(self._session, conn, self._retryable)  # type: ignore
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 819, in _insert_command
+    result = conn.command(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\helpers.py", line 47, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\pool.py", line 564, in command
+    self._raise_connection_failure(error)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\pool.py", line 536, in command
+    return command(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\network.py", line 153, in command
+    request_id, msg, size, max_doc_size = message._op_msg(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\message.py", line 419, in _op_msg
+    return _op_msg_uncompressed(flags, command, identifier, docs, opts)
+bson.errors.InvalidDocument: Invalid document {'timestamp': datetime.datetime(2025, 4, 4, 8, 28, 35, 564000), 'open_interest': Decimal('71136.577'), '_id': ObjectId('67ef983271af5813907764c0')} | cannot encode object: Decimal('71136.577'), of type: <class 'decimal.Decimal'>
+2025-04-04 13:58:36,021 : ERROR : BINANCE_FUTURES.http.1.http.1: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 241, in message_handler
+    return await self._open_interest(msg, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 96, in _open_interest
+    await self.callback(OPEN_INTEREST, o, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\trading-backend\candles.py", line 78, in open_interest_callback
+    open_interest_collection.insert_one(open_interest_data)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 891, in insert_one
+    self._insert_one(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 831, in _insert_one
+    self._database.client._retryable_write(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1896, in _retryable_write
+    return self._retry_with_session(retryable, func, s, bulk, operation, operation_id)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1782, in _retry_with_session
+    return self._retry_internal(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\_csot.py", line 119, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1817, in _retry_internal
+    return _ClientConnectionRetryable(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2565, in run
+    return self._read() if self._is_read else self._write()
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2687, in _write
+    return self._func(self._session, conn, self._retryable)  # type: ignore
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 819, in _insert_command
+    result = conn.command(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\helpers.py", line 47, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\pool.py", line 564, in command
+    self._raise_connection_failure(error)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\pool.py", line 536, in command
+    return command(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\network.py", line 153, in command
+    request_id, msg, size, max_doc_size = message._op_msg(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\message.py", line 419, in _op_msg
+    return _op_msg_uncompressed(flags, command, identifier, docs, opts)
+bson.errors.InvalidDocument: Invalid document {'timestamp': datetime.datetime(2025, 4, 4, 8, 28, 35, 564000), 'open_interest': Decimal('71136.577'), '_id': ObjectId('67ef983471af5813907764c1')} | cannot encode object: Decimal('71136.577'), of type: <class 'decimal.Decimal'>
+2025-04-04 13:58:37,150 : ERROR : BINANCE_FUTURES.ws.2: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 265, in message_handler
+    await self._trade(msg, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance.py", line 195, in _trade
+    await self.callback(TRADES, t, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\trading-backend\candles.py", line 48, in trade_callback
+    candles_collection.insert_one(next(iter(candle_data.values())))  # Insert last stored candle
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 891, in insert_one
+    self._insert_one(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 831, in _insert_one
+    self._database.client._retryable_write(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1896, in _retryable_write
+    return self._retry_with_session(retryable, func, s, bulk, operation, operation_id)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1782, in _retry_with_session
+    return self._retry_internal(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\_csot.py", line 119, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1817, in _retry_internal
+    return _ClientConnectionRetryable(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2565, in run
+    return self._read() if self._is_read else self._write()
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2687, in _write
+    return self._func(self._session, conn, self._retryable)  # type: ignore
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 819, in _insert_command
+    result = conn.command(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\helpers.py", line 47, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\pool.py", line 564, in command
+    self._raise_connection_failure(error)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\pool.py", line 536, in command
+    return command(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\network.py", line 153, in command
+    request_id, msg, size, max_doc_size = message._op_msg(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\message.py", line 419, in _op_msg
+    return _op_msg_uncompressed(flags, command, identifier, docs, opts)
+bson.errors.InvalidDocument: Invalid document {'timestamp': datetime.datetime(2025, 4, 4, 8, 28, 26), 'open': Decimal('84439.10'), 'high': Decimal('84439.10'), 'low': Decimal('84439.10'), 'close': Decimal('84439.10'), 'volume': Decimal('0.034'), '_id': ObjectId('67ef982771af5813907764b6')} | cannot encode object: Decimal('84439.10'), of type: <class 'decimal.Decimal'>
+2025-04-04 13:58:37,274 : ERROR : BINANCE_FUTURES.http.1.http.1: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 241, in message_handler
+    return await self._open_interest(msg, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 96, in _open_interest
+    await self.callback(OPEN_INTEREST, o, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\trading-backend\candles.py", line 78, in open_interest_callback
+    open_interest_collection.insert_one(open_interest_data)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 891, in insert_one
+    self._insert_one(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 831, in _insert_one
+    self._database.client._retryable_write(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1896, in _retryable_write
+    return self._retry_with_session(retryable, func, s, bulk, operation, operation_id)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1782, in _retry_with_session
+    return self._retry_internal(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\_csot.py", line 119, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1817, in _retry_internal
+    return _ClientConnectionRetryable(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2565, in run
+    return self._read() if self._is_read else self._write()
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2687, in _write
+    return self._func(self._session, conn, self._retryable)  # type: ignore
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 819, in _insert_command
+    result = conn.command(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\helpers.py", line 47, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\pool.py", line 564, in command
+    self._raise_connection_failure(error)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\pool.py", line 536, in command
+    return command(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\network.py", line 153, in command
+    request_id, msg, size, max_doc_size = message._op_msg(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\message.py", line 419, in _op_msg
+    return _op_msg_uncompressed(flags, command, identifier, docs, opts)
+bson.errors.InvalidDocument: Invalid document {'timestamp': datetime.datetime(2025, 4, 4, 8, 28, 38, 765000), 'open_interest': Decimal('71136.821'), '_id': ObjectId('67ef983571af5813907764c2')} | cannot encode object: Decimal('71136.821'), of type: <class 'decimal.Decimal'>
+2025-04-04 13:58:38,488 : ERROR : BINANCE_FUTURES.http.1.http.1: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 241, in message_handler
+    return await self._open_interest(msg, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 96, in _open_interest
+    await self.callback(OPEN_INTEREST, o, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\trading-backend\candles.py", line 78, in open_interest_callback
+    open_interest_collection.insert_one(open_interest_data)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 891, in insert_one
+    self._insert_one(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 831, in _insert_one
+    self._database.client._retryable_write(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1896, in _retryable_write
+    return self._retry_with_session(retryable, func, s, bulk, operation, operation_id)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1782, in _retry_with_session
+    return self._retry_internal(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\_csot.py", line 119, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1817, in _retry_internal
+    return _ClientConnectionRetryable(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2565, in run
+    return self._read() if self._is_read else self._write()
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2687, in _write
+    return self._func(self._session, conn, self._retryable)  # type: ignore
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 819, in _insert_command
+    result = conn.command(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\helpers.py", line 47, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\pool.py", line 564, in command
+    self._raise_connection_failure(error)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\pool.py", line 536, in command
+    return command(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\network.py", line 153, in command
+    request_id, msg, size, max_doc_size = message._op_msg(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\message.py", line 419, in _op_msg
+    return _op_msg_uncompressed(flags, command, identifier, docs, opts)
+bson.errors.InvalidDocument: Invalid document {'timestamp': datetime.datetime(2025, 4, 4, 8, 28, 38, 765000), 'open_interest': Decimal('71136.821'), '_id': ObjectId('67ef983671af5813907764c3')} | cannot encode object: Decimal('71136.821'), of type: <class 'decimal.Decimal'>
+2025-04-04 13:58:46,777 : ERROR : BINANCE_FUTURES.ws.2: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 265, in message_handler
+    await self._trade(msg, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance.py", line 195, in _trade
+    await self.callback(TRADES, t, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\trading-backend\candles.py", line 48, in trade_callback
+    candles_collection.insert_one(next(iter(candle_data.values())))  # Insert last stored candle
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 891, in insert_one
+    self._insert_one(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 831, in _insert_one
+    self._database.client._retryable_write(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1896, in _retryable_write
+    return self._retry_with_session(retryable, func, s, bulk, operation, operation_id)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1782, in _retry_with_session
+    return self._retry_internal(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\_csot.py", line 119, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1817, in _retry_internal
+    return _ClientConnectionRetryable(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2565, in run
+    return self._read() if self._is_read else self._write()
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2687, in _write
+    return self._func(self._session, conn, self._retryable)  # type: ignore
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 819, in _insert_command
+    result = conn.command(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\helpers.py", line 47, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\pool.py", line 564, in command
+    self._raise_connection_failure(error)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\pool.py", line 536, in command
+    return command(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\network.py", line 153, in command
+    request_id, msg, size, max_doc_size = message._op_msg(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\message.py", line 419, in _op_msg
+    return _op_msg_uncompressed(flags, command, identifier, docs, opts)
+bson.errors.InvalidDocument: Invalid document {'timestamp': datetime.datetime(2025, 4, 4, 8, 28, 26), 'open': Decimal('84439.10'), 'high': Decimal('84439.10'), 'low': Decimal('84439.10'), 'close': Decimal('84439.10'), 'volume': Decimal('0.034'), '_id': ObjectId('67ef982771af5813907764b6')} | cannot encode object: Decimal('84439.10'), of type: <class 'decimal.Decimal'>
+2025-04-04 13:58:54,040 : ERROR : BINANCE_FUTURES.ws.2: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 265, in message_handler
+    await self._trade(msg, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance.py", line 195, in _trade
+    await self.callback(TRADES, t, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\trading-backend\candles.py", line 48, in trade_callback
+    candles_collection.insert_one(next(iter(candle_data.values())))  # Insert last stored candle
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 891, in insert_one
+    self._insert_one(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 831, in _insert_one
+    self._database.client._retryable_write(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1896, in _retryable_write
+    return self._retry_with_session(retryable, func, s, bulk, operation, operation_id)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1782, in _retry_with_session
+    return self._retry_internal(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\_csot.py", line 119, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 1817, in _retry_internal
+    return _ClientConnectionRetryable(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2565, in run
+    return self._read() if self._is_read else self._write()
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\mongo_client.py", line 2687, in _write
+    return self._func(self._session, conn, self._retryable)  # type: ignore
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\collection.py", line 819, in _insert_command
+    result = conn.command(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\helpers.py", line 47, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\pool.py", line 564, in command
+    self._raise_connection_failure(error)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\pool.py", line 536, in command
+    return command(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\synchronous\network.py", line 153, in command
+    request_id, msg, size, max_doc_size = message._op_msg(
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\pymongo\message.py", line 419, in _op_msg
+    return _op_msg_uncompressed(flags, command, identifier, docs, opts)
+bson.errors.InvalidDocument: Invalid document {'timestamp': datetime.datetime(2025, 4, 4, 8, 28, 26), 'open': Decimal('84439.10'), 'high': Decimal('84439.10'), 'low': Decimal('84439.10'), 'close': Decimal('84439.10'), 'volume': Decimal('0.034'), '_id': ObjectId('67ef982771af5813907764b6')} | cannot encode object: Decimal('84439.10'), of type: <class 'decimal.Decimal'>
+2025-04-04 14:00:28,840 : ERROR : BINANCE_FUTURES.ws.2: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 265, in message_handler
+    await self._trade(msg, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance.py", line 195, in _trade
+    await self.callback(TRADES, t, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\trading-backend\candles.py", line 49, in trade_callback
+    value["timestamp"] = value["timestamp"].isoformat()  # Convert to ISO format
+AttributeError: 'str' object has no attribute 'isoformat'
+2025-04-04 14:00:40,000 : ERROR : BINANCE_FUTURES.ws.2: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 265, in message_handler
+    await self._trade(msg, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance.py", line 195, in _trade
+    await self.callback(TRADES, t, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\trading-backend\candles.py", line 49, in trade_callback
+    value["timestamp"] = value["timestamp"].isoformat()  # Convert to ISO format
+AttributeError: 'str' object has no attribute 'isoformat'
+2025-04-04 14:00:46,763 : ERROR : BINANCE_FUTURES.ws.2: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 265, in message_handler
+    await self._trade(msg, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\exchanges\binance.py", line 195, in _trade
+    await self.callback(TRADES, t, timestamp)
+  File "C:\Users\Aravind\trading-backend\venv\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\trading-backend\candles.py", line 49, in trade_callback
+    value["timestamp"] = value["timestamp"].isoformat()  # Convert to ISO format
+AttributeError: 'str' object has no attribute 'isoformat'
+2025-04-04 14:03:27,880 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-04-07 14:47:45,814 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-04-07 14:53:36,639 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-04-10 12:35:41,158 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-04-10 23:57:27,702 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-04-13 13:17:25,874 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-04-13 13:20:14,317 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-04-13 13:24:02,032 : ERROR : BINANCE_FUTURES.ws.2: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 263, in message_handler
+    await self._book(msg, pair, timestamp)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\exchanges\binance.py", line 317, in _book
+    await self._snapshot(exchange_pair)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\exchanges\binance.py", line 289, in _snapshot
+    await self.book_callback(L2_BOOK, self._l2_book[std_pair], time.time(), timestamp=timestamp, raw=resp, sequence_number=self.last_update_id[std_pair])
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\feed.py", line 247, in book_callback
+    await self.callback(book_type, book, receipt_timestamp)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\trading-backend\app\ingestion\binance_feed.py", line 96, in order_book_callback
+    "bids": list(book.book.bids.items())[:10],  # Top 10 bids
+AttributeError: 'order_book.SortedDict' object has no attribute 'items'
+2025-04-13 13:24:10,386 : ERROR : BINANCE_FUTURES.ws.2: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 263, in message_handler
+    await self._book(msg, pair, timestamp)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\exchanges\binance.py", line 317, in _book
+    await self._snapshot(exchange_pair)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\exchanges\binance.py", line 289, in _snapshot
+    await self.book_callback(L2_BOOK, self._l2_book[std_pair], time.time(), timestamp=timestamp, raw=resp, sequence_number=self.last_update_id[std_pair])
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\feed.py", line 247, in book_callback
+    await self.callback(book_type, book, receipt_timestamp)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\trading-backend\app\ingestion\binance_feed.py", line 96, in order_book_callback
+    "bids": list(book.book.bids.items())[:10],  # Top 10 bids
+AttributeError: 'order_book.SortedDict' object has no attribute 'items'
+2025-04-13 13:24:15,506 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-04-13 13:25:26,962 : ERROR : BINANCE_FUTURES.ws.2: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 263, in message_handler
+    await self._book(msg, pair, timestamp)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\exchanges\binance.py", line 317, in _book
+    await self._snapshot(exchange_pair)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\exchanges\binance.py", line 289, in _snapshot
+    await self.book_callback(L2_BOOK, self._l2_book[std_pair], time.time(), timestamp=timestamp, raw=resp, sequence_number=self.last_update_id[std_pair])
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\feed.py", line 247, in book_callback
+    await self.callback(book_type, book, receipt_timestamp)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\trading-backend\app\ingestion\binance_feed.py", line 96, in order_book_callback
+    "bids": [(price, size) for price, size in list(book.book.bids)[:10]],  # Top 10 bids
+  File "C:\Users\Aravind\trading-backend\app\ingestion\binance_feed.py", line 96, in <listcomp>
+    "bids": [(price, size) for price, size in list(book.book.bids)[:10]],  # Top 10 bids
+TypeError: cannot unpack non-iterable decimal.Decimal object
+2025-04-13 13:25:30,501 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-04-13 13:27:24,618 : ERROR : BINANCE_FUTURES.ws.2: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 263, in message_handler
+    await self._book(msg, pair, timestamp)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\exchanges\binance.py", line 317, in _book
+    await self._snapshot(exchange_pair)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\exchanges\binance.py", line 289, in _snapshot
+    await self.book_callback(L2_BOOK, self._l2_book[std_pair], time.time(), timestamp=timestamp, raw=resp, sequence_number=self.last_update_id[std_pair])
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\feed.py", line 247, in book_callback
+    await self.callback(book_type, book, receipt_timestamp)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\trading-backend\app\ingestion\binance_feed.py", line 104, in order_book_callback
+    "bids": list(book.book.bids.items())[:10],  # Top 10 bids
+AttributeError: 'order_book.SortedDict' object has no attribute 'items'
+2025-04-13 13:27:28,592 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-04-13 13:28:19,970 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-04-13 13:31:18,953 : ERROR : BINANCE_FUTURES.ws.2: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 263, in message_handler
+    await self._book(msg, pair, timestamp)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\exchanges\binance.py", line 317, in _book
+    await self._snapshot(exchange_pair)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\exchanges\binance.py", line 289, in _snapshot
+    await self.book_callback(L2_BOOK, self._l2_book[std_pair], time.time(), timestamp=timestamp, raw=resp, sequence_number=self.last_update_id[std_pair])
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\feed.py", line 247, in book_callback
+    await self.callback(book_type, book, receipt_timestamp)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\trading-backend\app\ingestion\binance_feed.py", line 111, in order_book_callback
+    "bids": [(float(price), float(size)) for price, size in list(book.book.bids.items())[:10]],
+AttributeError: 'order_book.SortedDict' object has no attribute 'items'
+2025-04-13 13:31:22,104 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
