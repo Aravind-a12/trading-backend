@@ -1,7 +1,7 @@
 import logging
 import asyncio
 from datetime import datetime
-import redis
+import redis.asyncio as redis
 import json
 import decimal
 from cryptofeed import FeedHandler
@@ -46,10 +46,15 @@ async def trade_callback(trade, receipt_timestamp):
     }
 
     try:
-        redis_client.zadd("trades", {json.dumps(trade_data): timestamp})
-        print("✅ Stored trade in Redis")
+        json_data = json.dumps(trade_data)
+        redis_client.zadd("trades", {json_data: timestamp})
+        await redis_client.publish("trade",json_data)  # 🔔 publish to pub/sub channel
+        print("✅ Stored and Published trade in Redis")
+        print("good")
+
     except Exception as e:
         print(f"❌ Redis Insert Error (Trade): {e}")
+
 
     # Handle candle data
     if timestamp not in candle_data:
@@ -90,7 +95,7 @@ async def open_interest_callback(data, receipt_timestamp):
 
     try:
         redis_client.zadd("open_interest", {json.dumps(open_interest_data): data.timestamp})
-        print("✅ Stored open interest in Redis")
+        print("✅ Stored open interest in Redis") 
     except Exception as e:
         print(f"❌ Redis Insert Error (Open Interest): {e}")
 
