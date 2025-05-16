@@ -4,6 +4,8 @@ from datetime import datetime
 import redis.asyncio as redis
 import json
 import decimal
+import requests
+import aiohttp
 from cryptofeed import FeedHandler
 from cryptofeed.exchanges import BinanceFutures
 from cryptofeed.defines import TRADES, OPEN_INTEREST, L2_BOOK,FUNDING,TICKER
@@ -18,12 +20,16 @@ class DecimalEncoder(json.JSONEncoder):
         return super().default(obj)
 
 redis_client = redis.Redis(host='localhost', port=6379, decode_responses=True)
-try:
-    redis_client.ping()
-    print("✅ Redis Connected Successfully!")
-except Exception as e:
-    print(f"❌ Redis Connection Error: {e}")
-    exit()
+BINANCE_EXCHANGE_INFO_URL = "https://api.binance.com/api/v3/exchangeInfo"
+REDIS_KEY = "binance:exchange_info"
+
+async def check_redis_connection():
+    try:
+        await redis_client.ping()
+        print("✅ Redis Connected Successfully!")
+    except Exception as e:
+        print(f"❌ Redis Connection Error: {e}")
+        exit()
 
 # Candle data structure
 candle_data = {}
@@ -55,7 +61,6 @@ async def trade_callback(trade, receipt_timestamp):
     except Exception as e:
         print(f"❌ Redis Insert Error (Trade): {e}")
 
-
     # Handle candle data
     if timestamp not in candle_data:
         if candle_data:
@@ -83,6 +88,7 @@ async def trade_callback(trade, receipt_timestamp):
         candle["low"] = min(candle["low"], price)
         candle["close"] = price
         candle["volume"] += volume
+        
 
 # Open interest callback
 async def open_interest_callback(data, receipt_timestamp):
@@ -148,8 +154,68 @@ async def ticker_callback(data, receipt_timestamp):
         print("✅ Stored ticker in Redis")
     except Exception as e:
         print(f"❌ Redis Insert Error (Ticker): {e}")
+    
+# EXCHANGE INFORMATION
+def store_futures_exchange_info():
+    try:
+        url = "https://fapi.binance.com/fapi/v1/exchangeInfo"
+        response = requests.get(url)
+        response.raise_for_status()
+        data = response.json()
 
-def main():
+        all_symbols = data.get("symbols", [])
+        redis_client.set("exchange_info:all", json.dumps(all_symbols))
+
+        for symbol in all_symbols:
+            symbol_name = symbol.get("symbol")
+            redis_client.set(f"exchange_info:{symbol_name}", json.dumps(symbol))
+
+        print(f"✅ Stored {len(all_symbols)} exchange info entries in Redis")
+        for symbol in all_symbols:
+            print(f"Symbol: {symbol.get('symbol')}")
+            print(f"  Base Asset     : {symbol.get('baseAsset')}")
+            print(f"  Quote Asset    : {symbol.get('quoteAsset')}")
+            print(f"  Status         : {symbol.get('status')}")
+            print(f"  Margin Asset   : {symbol.get('marginAsset')}")
+            print(f"  Contract Type  : {symbol.get('contractType')}")
+            print(f"  Price Precision: {symbol.get('pricePrecision')}")
+            print(f"  Quantity Prec. : {symbol.get('quantityPrecision')}")
+    except Exception as e:
+        print(f"❌ Failed to fetch/store exchange info: {e}")
+
+# AGGREGATE TRADES
+def get_aggregate_trades(symbol: str, limit: int = 1):
+    url = "https://api.binance.com/api/v3/aggTrades"
+    params = {
+        "symbol": symbol.upper(),
+        "limit": limit
+    }
+
+    response = requests.get(url, params=params)
+    response.raise_for_status()  # Raise an error if request failed
+    return response.json()
+
+
+# KLINE DATA
+def get_klines(symbol: str, interval: str, limit: int = 100, start_time: int = None, end_time: int = None):
+    url = "https://fapi.binance.com/fapi/v1/klines"
+    params = {
+        "symbol": symbol.upper(),
+        "interval": interval,
+        "limit": limit
+    }
+    if start_time:
+        params["startTime"] = start_time
+    if end_time:
+        params["endTime"] = end_time
+
+    response = requests.get(url, params=params)
+    response.raise_for_status()
+    return response.json()
+
+
+async def main():
+    store_futures_exchange_info()
     f = FeedHandler()
     f.add_feed(BinanceFutures(
         symbols=['BTC-USDT-PERP'],
@@ -162,10 +228,16 @@ def main():
             TICKER:ticker_callback,
         }
     ))
-
+    
     print("📡 Binance Futures Feed started... waiting for data")
     f.run()
 
 if __name__ == "__main__":
     asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
-    main()
+    asyncio.run(check_redis_connection())
+    trades = get_aggregate_trades("BTCUSDT", limit=1)
+    print(trades)
+    klines = get_klines("BTCUSDT", "1h", limit=5)
+    for kline in klines:
+        print(kline)
+    asyncio.run(main())
