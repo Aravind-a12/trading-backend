@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.routes import trades, candles, open_interest
 from app.routes.orderbook import router  # order book router
+from app.routes import testsymbol  # import the new symbol router
 
 app = FastAPI()
 
@@ -17,6 +18,7 @@ app.include_router(trades.router, prefix="/api/trades")
 app.include_router(candles.router, prefix="/api/candles")
 app.include_router(open_interest.router, prefix="/api/open-interest")
 app.include_router(router, prefix="/api/orderbook")  # orderbook route
+app.include_router(testsymbol.router, prefix="/api/symbol")
 
 @app.get("/")
 def root():
