@@ -5,7 +5,6 @@ import redis.asyncio as redis
 import json
 import decimal
 import requests
-import aiohttp
 from cryptofeed import FeedHandler
 from cryptofeed.exchanges import BinanceFutures
 from cryptofeed.defines import TRADES, OPEN_INTEREST, L2_BOOK,FUNDING,TICKER
@@ -48,7 +47,7 @@ async def trade_callback(trade, receipt_timestamp):
         "volume": volume,
         "side": side
     }
-
+    
     try:
         json_data = json.dumps(trade_data)
         redis_client.zadd("trades", {json_data: timestamp})
@@ -166,7 +165,7 @@ def store_futures_exchange_info():
             symbol_name = symbol.get("symbol")
             redis_client.set(f"exchange_info:{symbol_name}", json.dumps(symbol))
 
-        # print(f"✅ Stored {len(all_symbols)} exchange info entries in Redis")
+        print(f"✅ Stored {len(all_symbols)} exchange info entries in Redis")
         for symbol in all_symbols:
             print(f"Symbol: {symbol.get('symbol')}")
             print(f"  Base Asset     : {symbol.get('baseAsset')}")
@@ -301,19 +300,19 @@ if __name__ == "__main__":
     for trade in trades_futures:
         print(trade)
 
-    # # Get SPOT aggregate trades
+    # Get SPOT aggregate trades
     print("\n=== Aggregate Trades for SPOT ===")
     trades_spot = get_aggregate_trades_spot("BTCUSDT", limit=1)
     for trade in trades_spot:
         print(trade)
     
-    # # Get FUTURES Klines data
+    # Get FUTURES Klines data
     print("\n=== klines data for FUTURE ===")
     klines_futures= get_klines_futures("BTCUSDT", "1h", limit=5)
     for kline in klines_futures:
         print(kline)
         
-    # # Get SPOT Klines data
+    # Get SPOT Klines data
     print("\n=== klines data for SPOT ===")
     klines_spot = get_klines_spot("BTCUSDT", "1h", limit=5)
     for kline in klines_spot:

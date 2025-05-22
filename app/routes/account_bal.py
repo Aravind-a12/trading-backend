@@ -1,6 +1,5 @@
 from fastapi import APIRouter, HTTPException
 from app.ingestion.user_data import get_futures_account_balance_v3
-import os 
 
 router = APIRouter()
 

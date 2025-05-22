@@ -171,36 +171,35 @@ def get_trade_history(symbol: str):
         except Exception as e:
             print(f"Error fetching trade history: {e}")
 
-
 if __name__ == "__main__":
   
     # -------------------CALL ACCOUNT BALANCE----------------------
-    # acc_balance = get_futures_account_balance_v3()
-    # if acc_balance:
-    #     print(acc_balance)
-    # else:
-    #     print("No data returned.")
+    acc_balance = get_futures_account_balance_v3()
+    if acc_balance:
+        print(acc_balance)
+    else:
+        print("No data returned.")
         
     # -------------------CALL ALL ORDERS----------------------
-    # orders = get_all_the_orders("BTCUSDT")
-    # if orders:
-    #     print(orders)
-    # else:
-    #     print("No data returned.")   
+    orders = get_all_the_orders("BTCUSDT")
+    if orders:
+        print(orders)
+    else:
+        print("No data returned.")   
         
     # # -------------------CALL OPEN ORDERS----------------------
-    # open_orders = get_open_orders("BTCUSDT")
-    # if open_orders:
-    #     print(open_orders)
-    # else:
-    #     print("No data returned.")
+    open_orders = get_open_orders("BTCUSDT")
+    if open_orders:
+        print(open_orders)
+    else:
+        print("No data returned.")
     
     # # -------------------CALL POSITION RISK----------------------
-    # positions = get_position_risk()
-    # if positions:
-    #     print(positions)
-    # else:
-    #     print("No position data returned.")
+    positions = get_position_risk()
+    if positions:
+        print(positions)
+    else:
+        print("No position data returned.")
 
     # # -------------------CALL TRADE HISTORY------------------------
     trade_history=get_trade_history("BTCUSDT")

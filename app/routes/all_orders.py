@@ -1,6 +1,5 @@
 from fastapi import APIRouter, HTTPException,Query
 from app.ingestion.user_data import get_all_the_orders
-import os 
 
 router = APIRouter()
 
