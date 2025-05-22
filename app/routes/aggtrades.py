@@ -1,37 +1,20 @@
-import requests
+from fastapi import APIRouter,HTTPException
+from app.ingestion.binance_feed import get_aggregate_trades_futures,get_aggregate_trades_spot
 
-def get_spot_agg_trades(symbol: str, limit: int = 10):
-    """
-    Fetch aggregate trades from Binance Spot market.
-    Endpoint: /api/v3/aggTrades
-    """
-    url = "https://api.binance.com/api/v3/aggTrades"
-    params = {"symbol": symbol.upper(), "limit": limit}
-    response = requests.get(url, params=params)
-    response.raise_for_status()
-    return response.json()
+router = APIRouter()
 
-def get_futures_agg_trades(symbol: str, limit: int = 10):
-    """
-    Fetch aggregate trades from Binance Futures market.
-    Endpoint: /fapi/v1/aggTrades
-    """
-    url = "https://fapi.binance.com/fapi/v1/aggTrades"
-    params = {"symbol": symbol.upper(), "limit": limit}
-    response = requests.get(url, params=params)
-    response.raise_for_status()
-    return response.json()
+@router.get("/{symbol}")
+async def get_agg_trades(symbol: str):
+    try:
+        agg_trades = get_aggregate_trades_futures(symbol, limit=5)
+        return agg_trades  # returns only aggtrades
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
-# Example usage
-if __name__ == "__main__":
-    spot_trades = get_spot_agg_trades("BTCUSDT", limit=3)
-    print("Spot Aggregate Trades:")
-    for trade in spot_trades:
-        print(trade)
-
-    futures_trades = get_futures_agg_trades("BTCUSDT", limit=3)
-    print("\nFutures Aggregate Trades:")
-    for trade in futures_trades:
-        print(trade)
-
-
+@router.get("/spot/{symbol}")
+async def get_agg_trades_spot(symbol: str):
+    try:
+        agg_trades = get_aggregate_trades_spot(symbol, limit=5)
+        return agg_trades
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

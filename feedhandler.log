@@ -1157,3 +1157,663 @@ Traceback (most recent call last):
     "bids": [(float(price), float(size)) for price, size in list(book.book.bids.items())[:10]],
 AttributeError: 'order_book.SortedDict' object has no attribute 'items'
 2025-04-13 13:31:22,104 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-05-15 12:58:59,566 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-15 13:00:50,514 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-15 13:03:07,702 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-15 13:05:21,529 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-15 13:05:21,947 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\app\ingestion\binance_feed.py", line 199, in <module>
+    loop.run_until_complete(main())
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 641, in run_until_complete
+    return future.result()
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\app\ingestion\binance_feed.py", line 187, in main
+    f.run()
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 157, in run
+    self.stop(loop=loop)
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 195, in stop
+    loop.run_until_complete(asyncio.gather(*shutdown_tasks))
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 617, in run_until_complete
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-15 13:05:21,947 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\app\ingestion\binance_feed.py", line 199, in <module>
+    loop.run_until_complete(main())
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 641, in run_until_complete
+    return future.result()
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\app\ingestion\binance_feed.py", line 187, in main
+    f.run()
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 157, in run
+    self.stop(loop=loop)
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 195, in stop
+    loop.run_until_complete(asyncio.gather(*shutdown_tasks))
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 617, in run_until_complete
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-15 13:12:02,149 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-15 13:17:18,037 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-15 13:28:59,100 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-05-15 13:41:56,572 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-15 13:42:49,178 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-15 13:44:19,131 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-15 13:48:55,537 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-15 13:50:08,538 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-15 13:51:21,846 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-15 14:00:39,125 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-15 14:02:46,657 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-15 14:07:03,015 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-15 14:07:36,962 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-15 14:12:44,341 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-15 14:14:19,175 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-15 17:06:43,183 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-15 17:39:50,000 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-15 17:40:56,190 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-15 17:42:02,690 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-15 18:00:51,159 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-15 18:01:40,919 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-15 18:02:33,055 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-15 18:21:24,099 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-15 18:23:18,119 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-15 21:46:07,198 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-15 21:48:01,146 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-15 21:49:10,129 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-15 21:49:27,054 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-15 21:49:53,636 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-15 21:50:20,939 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-15 22:12:18,713 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-16 10:22:20,886 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-16 18:40:56,826 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-16 18:43:49,530 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-20 11:43:14,964 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-20 11:46:13,395 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-20 11:53:37,970 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-20 11:55:08,820 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-20 11:55:53,448 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-20 12:01:21,409 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-20 12:01:57,064 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-20 12:03:32,800 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-20 12:08:43,599 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-20 16:21:41,287 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-20 16:55:22,969 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-20 17:04:44,011 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-20 17:55:08,616 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-20 17:55:53,974 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-20 23:38:55,867 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-20 23:41:03,399 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-20 23:44:27,035 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-20 23:48:43,316 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-20 23:49:48,325 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-21 17:16:07,407 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-21 17:24:23,684 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-21 17:26:20,464 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-21 17:27:39,731 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-21 17:30:04,814 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-21 23:47:29,331 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-21 23:47:58,173 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-21 23:48:15,984 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-21 23:48:50,242 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-21 23:49:25,153 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-21 23:51:56,621 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\HP\OneDrive\Desktop\trading\trading-backend\venv1\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
