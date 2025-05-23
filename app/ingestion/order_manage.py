@@ -72,6 +72,51 @@ def place_futures_order(symbol: str, side: str, type_: str, quantity: float, **k
         except Exception as e:
             print(f"Error placing order: {e}")
 
+# ---------------------FUNCTION FOR MODIFYING ORDER---------------------
+def modify_futures_order(symbol: str, order_id: int = None, orig_client_order_id: str = None,
+                         quantity: float = None, price: float = None, time_in_force: str = "GTC"):
+    """
+    Modify an existing LIMIT order on Binance Futures.
+    At least one of order_id or orig_client_order_id must be provided.
+    """
+    url = f"{FUTURES_BASE_URL}/fapi/v1/order"
+    timestamp = int(time.time() * 1000)
+
+    params = {
+        "symbol": symbol.upper(),
+        "timestamp": timestamp,
+        "timeInForce": time_in_force
+    }
+
+    if order_id:
+        params["orderId"] = order_id
+    elif orig_client_order_id:
+        params["origClientOrderId"] = orig_client_order_id
+    else:
+        raise ValueError("You must provide either order_id or orig_client_order_id to modify an order.")
+
+    if price:
+        params["price"] = price
+    if quantity:
+        params["quantity"] = quantity
+
+    signed_query = sign(params, API_SECRET)
+    full_url = f"{url}?{signed_query}"
+
+    headers = {
+        "X-MBX-APIKEY": API_KEY
+    }
+
+    with httpx.Client() as client:
+        try:
+            response = client.put(full_url, headers=headers)
+            response.raise_for_status()
+            return response.json()
+        except httpx.HTTPStatusError as e:
+            print(f"HTTP error: {e.response.status_code} - {e.response.text}")
+        except Exception as e:
+            print(f"Error modifying order: {e}")
+
 # ------------------- Main execution block -------------------------------
 if __name__ == "__main__":
     response = place_futures_order(symbol, side, type_, quantity, **kwargs)
@@ -80,4 +125,19 @@ if __name__ == "__main__":
     else:
         print("No data returned.")
         
-# this is python
+    order_id_to_modify = response["orderId"]
+    new_price = float(input("Enter new price to modify the LIMIT order: "))
+    new_quantity = float(input("Enter new quantity: "))
+
+    modification_response = modify_futures_order(
+    symbol=symbol,
+    order_id=order_id_to_modify,
+    price=new_price,
+    quantity=new_quantity
+  )
+
+    if modification_response:
+     print("Order modified:")
+     print(modification_response)
+    else:
+     print("Failed to modify order.")

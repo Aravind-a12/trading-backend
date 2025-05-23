@@ -10,6 +10,7 @@ from app.routes import all_orders
 from app.routes import open_orders
 from app.routes import position_info
 from app.routes import trade_history
+from app.routes import order_management
 
 app = FastAPI()
 
@@ -33,6 +34,8 @@ app.include_router(all_orders.router, prefix="/api/all_orders")
 app.include_router(open_orders.router, prefix="/api/open_orders")
 app.include_router(position_info.router, prefix="/api/position_info")
 app.include_router(trade_history.router, prefix="/api/trade_history")
+app.include_router(order_management.router, prefix="/api/order_management")
+
 
 @app.get("/")
 def root():
