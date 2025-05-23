@@ -1157,3 +1157,130 @@ Traceback (most recent call last):
     "bids": [(float(price), float(size)) for price, size in list(book.book.bids.items())[:10]],
 AttributeError: 'order_book.SortedDict' object has no attribute 'items'
 2025-04-13 13:31:22,104 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-05-06 12:58:50,485 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-05-06 13:19:09,333 : WARNING : BINANCE_FUTURES: Missing book update detected, resetting book
+2025-05-09 14:00:31,586 : WARNING : BINANCE_FUTURES.ws.2: encountered connection issue no close frame received or sent - reconnecting in 1.0 seconds...
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 95, in _handler
+    async for message in connection.read():
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection.py", line 339, in read
+    async for data in self.conn:
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\websockets\asyncio\connection.py", line 242, in __aiter__
+    yield await self.recv()
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\websockets\asyncio\connection.py", line 322, in recv
+    raise self.protocol.close_exc from self.recv_exc
+websockets.exceptions.ConnectionClosedError: no close frame received or sent
+2025-05-09 15:04:39,064 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-05-09 15:07:32,427 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-05-12 11:14:13,858 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-12 11:14:33,742 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-12 11:15:26,432 : ERROR : FH: Unhandled AssertionError() - shutting down
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\asyncio\windows_events.py", line 314, in run_forever
+    assert self._self_reading_future is None
+AssertionError
+2025-05-12 11:19:54,532 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\Aravind\testing-backend\trading-backend\app\ingestion\binance_feed.py", line 148, in <module>
+    loop = asyncio.get_event_loop()
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\asyncio\events.py", line 656, in get_event_loop
+    raise RuntimeError('There is no current event loop in thread %r.'
+RuntimeError: There is no current event loop in thread 'MainThread'.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\asyncio\windows_events.py", line 316, in run_forever
+    super().run_forever()
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-12 11:23:03,524 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-05-12 11:24:29,354 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-12 11:24:41,965 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-05-12 12:06:29,424 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-05-12 13:29:29,083 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-05-12 14:25:29,459 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-05-16 11:54:07,888 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-05-16 14:09:58,570 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-05-17 15:59:59,075 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-05-17 16:10:37,056 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-05-17 16:15:36,831 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-05-19 15:55:50,054 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-05-19 18:40:59,895 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-05-19 19:01:33,738 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-05-19 19:09:06,362 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-19 19:23:39,481 : ERROR : BINANCE_FUTURES.ws.2: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection.py", line 111, in connect
+    yield self
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 56, in _create_connection
+    async with self.conn.connect() as connection:
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 217, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection.py", line 113, in connect
+    await self.close()
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection.py", line 126, in close
+    await conn.close()
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\websockets\asyncio\connection.py", line 635, in close
+    async with self.send_context():
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 206, in __aexit__
+    await anext(self.gen)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\websockets\asyncio\connection.py", line 939, in send_context
+    async with asyncio_timeout_at(self.close_deadline):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\websockets\asyncio\async_timeout.py", line 108, in timeout_at
+    loop = asyncio.get_running_loop()
+RuntimeError: no running event loop
+2025-05-19 19:23:40,066 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-05-20 18:22:13,446 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-05-21 17:35:36,745 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-05-21 17:46:39,046 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-05-22 17:25:38,754 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-05-22 18:44:24,843 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()

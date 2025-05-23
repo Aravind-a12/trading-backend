@@ -1,47 +1,103 @@
-from fastapi import FastAPI, WebSocket, WebSocketDisconnect, APIRouter
+from fastapi import FastAPI, APIRouter, WebSocket, WebSocketDisconnect
+from starlette.websockets import WebSocketState
 import redis.asyncio as redis
-import json
 import asyncio
+import json
+from dateutil.parser import isoparse
+from asyncio import CancelledError
 
 app = FastAPI()
 router = APIRouter()
-redis_client = redis.Redis(host='localhost', port=6379, decode_responses=True)
 
-# Map to keep track of connected clients per channel
-connected_clients = {}
+# Redis async client
+redis_client = redis.Redis(host="localhost", port=6379, decode_responses=True)
 
-@router.websocket("/ws/{channel}")
-async def websocket_endpoint(websocket: WebSocket, channel: str):
-    print(f"hello - WebSocket route hit for channel: {channel}")  # Log that the route is being hit
-    
-    await websocket.accept()
-    print(f"✅ Client connected to: {channel}")
-
-    if channel not in connected_clients:
-        connected_clients[channel] = set()
-        print(f"hello - No clients in channel {channel}, adding this client.")
-    
-    connected_clients[channel].add(websocket)
-    print(f"hello - Client added to channel {channel}")
+# Utility to stream Redis pub/sub to WebSocket and convert timestamps
+async def stream_channel_to_websocket(websocket: WebSocket, channel_name: str):
+    pubsub = redis_client.pubsub()
+    await pubsub.subscribe(channel_name)
 
     try:
-        last_seen = None
         while True:
-            print(f"hello - Fetching data for channel: {channel}")  # Log before fetching data
-            data = await redis_client.zrevrange(channel, 0, 0)
-            print(f"hello - Data fetched from Redis: {data}")  # Log data fetched from Redis
+            try:
+                message = await pubsub.get_message(ignore_subscribe_messages=True, timeout=5.0)
 
-            if data and data[0] != last_seen:
-                print(f"hello - Sending data: {data[0]}")  # Log before sending data
-                await websocket.send_text(data[0])
-                last_seen = data[0]
-            await asyncio.sleep(1)
+                if message and message["type"] == "message":
+                    try:
+                        data = json.loads(message["data"])
+
+                        # Convert ISO timestamp to epoch milliseconds if needed
+                        if "timestamp" in data:
+                            if isinstance(data["timestamp"], str):
+                                try:
+                                    data["timestamp"] = int(isoparse(data["timestamp"]).timestamp() * 1000)
+                                except Exception as e:
+                                    print(f"❌ Timestamp parsing error: {e}")
+                                    continue
+                            elif isinstance(data["timestamp"], (int, float)):
+                                data["timestamp"] = int(float(data["timestamp"]) * 1000)
+
+                        # ✅ Check if WebSocket is still open before sending
+                        if websocket.application_state == WebSocketState.CONNECTED:
+                            await websocket.send_text(json.dumps(data))
+                        else:
+                            print(f"⚠️ WebSocket closed, stopping stream for {channel_name}")
+                            break
+
+                    except Exception as e:
+                        print(f"❌ Error processing message: {e}")
+                        continue  # Continue on non-fatal error
+
+                await asyncio.sleep(0.01)
+
+            except CancelledError:
+                print(f"⚠️ Stream cancelled for {channel_name}")
+                break
 
     except WebSocketDisconnect:
-        print(f"❌ Client disconnected from {channel}")
-        connected_clients[channel].remove(websocket)
+        print(f"🔌 Client disconnected from {channel_name}")
     except Exception as e:
-        print(f"❌ WebSocket Error ({channel}): {e}")
+        print(f"❌ Unexpected error in stream: {e}")
+    finally:
+        await pubsub.unsubscribe(channel_name)
+        await pubsub.close()
 
-# Add router to FastAPI app
+# WebSocket endpoints
+@router.websocket("/ws/trades")
+async def websocket_trades(websocket: WebSocket):
+    await websocket.accept()
+    print("🔗 WebSocket connected: /ws/trades")
+    await stream_channel_to_websocket(websocket, "realtime:trades")
+
+@router.websocket("/ws/candles")
+async def websocket_candles(websocket: WebSocket):
+    await websocket.accept()
+    print("🔗 WebSocket connected: /ws/candles")
+    await stream_channel_to_websocket(websocket, "realtime:candles")
+
+@router.websocket("/ws/open-interest")
+async def websocket_open_interest(websocket: WebSocket):
+    await websocket.accept()
+    print("🔗 WebSocket connected: /ws/open-interest")
+    await stream_channel_to_websocket(websocket, "realtime:open_interest")
+
+@router.websocket("/ws/orderbook")
+async def websocket_orderbook(websocket: WebSocket):
+    await websocket.accept()
+    print("🔗 WebSocket connected: /ws/orderbook")
+    await stream_channel_to_websocket(websocket, "realtime:orderbook")
+
+@router.websocket("/ws/funding-rate")
+async def websocket_funding_rate(websocket: WebSocket):
+    await websocket.accept()
+    print("🔗 WebSocket connected: /ws/funding-rate")
+    await stream_channel_to_websocket(websocket, "realtime:funding_rate")
+
+@router.websocket("/ws/ticker")
+async def websocket_ticker(websocket: WebSocket):
+    await websocket.accept()
+    print("🔗 WebSocket connected: /ws/ticker")
+    await stream_channel_to_websocket(websocket, "realtime:ticker")
+
+# Include router
 app.include_router(router)
