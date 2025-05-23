@@ -180,31 +180,30 @@ if __name__ == "__main__":
     else:
         print("No data returned.")
         
-    # -------------------CALL ALL ORDERS----------------------
+    # # -------------------CALL ALL ORDERS----------------------
     orders = get_all_the_orders("BTCUSDT")
     if orders:
         print(orders)
     else:
         print("No data returned.")   
         
-    # # -------------------CALL OPEN ORDERS----------------------
+    # -------------------CALL OPEN ORDERS----------------------
     open_orders = get_open_orders("BTCUSDT")
     if open_orders:
         print(open_orders)
     else:
         print("No data returned.")
     
-    # # -------------------CALL POSITION RISK----------------------
+    # -------------------CALL POSITION RISK----------------------
     positions = get_position_risk()
     if positions:
         print(positions)
     else:
         print("No position data returned.")
-
-    # # -------------------CALL TRADE HISTORY------------------------
-    trade_history=get_trade_history("BTCUSDT")
+        
+    # # --------------------CALL TRADE HISTORY-----------------------
+    trade_history = get_trade_history("BTCUSDT")
     if trade_history:
-      print(trade_history) 
+        print(trade_history)
     else:
-      print("No Trade history found")  
-   
+        print("No Trade history found")
