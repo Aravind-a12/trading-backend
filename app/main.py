@@ -1,16 +1,12 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routes import trades, candles, open_interest
-from app.routes.orderbook import router  # order book router
-from app.routes import aggtrades  # aggtrades router
-from app.routes import kline  # kline router
-from app.routes import exchangeinfo # exchange info router
-from app.routes import account_bal
-from app.routes import all_orders
-from app.routes import open_orders
-from app.routes import position_info
-from app.routes import trade_history
-from app.routes import order_management
+from app.routes import (
+    trades, candles, open_interest, aggtrades, kline, exchangeinfo, account_bal,
+    all_orders, open_orders, position_info, trade_history, websocket  # ✅ include websocket
+)
+from app.routes.orderbook import router as orderbook_router
+from app.ingestion.user_stream import start_user_stream
+import asyncio
 
 app = FastAPI()
 
@@ -22,10 +18,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Include routers
 app.include_router(trades.router, prefix="/api/trades")
 app.include_router(candles.router, prefix="/api/candles")
 app.include_router(open_interest.router, prefix="/api/open-interest")
-app.include_router(router, prefix="/api/orderbook")  # orderbook route
+app.include_router(orderbook_router, prefix="/api/orderbook")
 app.include_router(aggtrades.router, prefix="/api/aggtrades")
 app.include_router(kline.router, prefix="/api/kline")
 app.include_router(exchangeinfo.router, prefix="/api/exchangeinfo")
@@ -34,9 +31,14 @@ app.include_router(all_orders.router, prefix="/api/all_orders")
 app.include_router(open_orders.router, prefix="/api/open_orders")
 app.include_router(position_info.router, prefix="/api/position_info")
 app.include_router(trade_history.router, prefix="/api/trade_history")
-app.include_router(order_management.router, prefix="/api/order_management")
 
+# ✅ Include WebSocket router
+app.include_router(websocket.router)
 
 @app.get("/")
 def root():
     return {"message": "Trading backend API is running 🚀"}
+
+@app.on_event("startup")
+async def on_startup():
+    asyncio.create_task(start_user_stream())

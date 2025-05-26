@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-from app.ingestion.binance_feed import get_klines_futures, get_klines_spot
+from app.ingestion.kline import get_klines_futures, get_klines_spot
 
 router = APIRouter()
 

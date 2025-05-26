@@ -10,4 +10,4 @@ async def get_acc_balance():
         return acc_bal
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-    
+     

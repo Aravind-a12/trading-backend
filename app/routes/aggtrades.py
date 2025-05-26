@@ -1,5 +1,5 @@
 from fastapi import APIRouter,HTTPException
-from app.ingestion.binance_feed import get_aggregate_trades_futures,get_aggregate_trades_spot
+from app.ingestion.aggtrades import get_aggregate_trades_futures, get_aggregate_trades_spot
 
 router = APIRouter()
 

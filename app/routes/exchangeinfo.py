@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-from app.ingestion.binance_feed import store_futures_exchange_info,store_spot_exchange_info
+from app.ingestion.exchange_info import store_futures_exchange_info,store_spot_exchange_info
 
 router = APIRouter()
 

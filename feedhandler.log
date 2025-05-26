@@ -1817,3 +1817,45 @@ Traceback (most recent call last):
   File "C:\Users\HP\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
     raise RuntimeError('This event loop is already running')
 RuntimeError: This event loop is already running
+2025-05-23 12:29:21,909 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-23 12:38:36,867 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-23 12:41:14,048 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-05-23 19:16:30,691 : WARNING : BINANCE_FUTURES.ws.2: encountered connection issue no close frame received or sent - reconnecting in 1.0 seconds...
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 95, in _handler
+    async for message in connection.read():
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection.py", line 339, in read
+    async for data in self.conn:
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\websockets\asyncio\connection.py", line 242, in __aiter__
+    yield await self.recv()
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\websockets\asyncio\connection.py", line 322, in recv
+    raise self.protocol.close_exc from self.recv_exc
+websockets.exceptions.ConnectionClosedError: no close frame received or sent
+2025-05-23 20:00:49,303 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-05-23 20:10:28,741 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()

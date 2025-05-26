@@ -1,48 +1,48 @@
 import asyncio
 import websockets
-import requests
-import hmac
-import hashlib
-import time
 import json
+import os
+from dotenv import load_dotenv
+import redis.asyncio as redis
 
-# Replace with your Binance Futures API key and secret
-API_KEY = '5c7c3366d0f9a941e56e93b07a1cf45476dca90478f1e8302397405bb782f5eb'
-API_SECRET = '1fde4e8690060be4a6af24ced9c2eab36add4d36092562f2ed2bc222bf41e709'
-BASE_URL = 'https://testnet.binancefuture.com'
-WS_BASE= 'wss://stream.binancefuture.com/ws'
+load_dotenv()
 
-def get_listen_key():
-    url = f"{BASE_URL}/fapi/v1/listenKey"
-    headers = {"X-MBX-APIKEY": API_KEY}
-    response = requests.post(url, headers=headers)
-    return response.json()['listenKey']
+WS_BASE = 'wss://stream.binancefuture.com/ws'  
+
+# Redis configuration
+redis_client = redis.Redis(host='localhost', port=6379, decode_responses=True)
+
+async def get_listen_key_from_redis():
+    listen_key = await redis_client.get("binance:listen_key")
+    if not listen_key:
+        raise ValueError("❌ Listen key not found in Redis")
+    return listen_key
 
 async def listen_account_updates(listen_key):
     url = f"{WS_BASE}/{listen_key}"
     async with websockets.connect(url) as ws:
-        print("Connected to account stream...")
+        print("✅ Connected to account WebSocket...")
         while True:
             try:
                 msg = await ws.recv()
                 data = json.loads(msg)
-                
-                if data.get('e') == 'ACCOUNT_UPDATE':
-                    print("✅ ACCOUNT_UPDATE received:")
-                    for balance in data['a']['B']:
+
+                if data.get("e") == "ACCOUNT_UPDATE":
+                    print("📩 ACCOUNT_UPDATE received:")
+                    for balance in data["a"]["B"]:
                         print(f"Asset: {balance['a']}, Wallet Balance: {balance['wb']}, Cross Wallet Balance: {balance['cw']}")
 
-                    for pos in data['a']['P']:
+                    for pos in data["a"]["P"]:
                         print(f"Symbol: {pos['s']}, Position: {pos['pa']}, Entry Price: {pos['ep']}, Unrealized PnL: {pos['up']}")
-                    print('-' * 40)
+                    print('-' * 50)
 
             except Exception as e:
-                print("Error:", e)
+                print("❌ WebSocket Error:", e)
                 break
 
-def start_listener():
-    listen_key = get_listen_key()
-    asyncio.run(listen_account_updates(listen_key))
+async def start_listener():
+    listen_key = await get_listen_key_from_redis()
+    await listen_account_updates(listen_key)
 
 if __name__ == "__main__":
-    start_listener()
+    asyncio.run(start_listener())
