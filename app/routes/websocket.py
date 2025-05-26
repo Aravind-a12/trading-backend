@@ -63,40 +63,40 @@ async def stream_channel_to_websocket(websocket: WebSocket, channel_name: str):
         await pubsub.close()
 
 # WebSocket endpoints
-@router.websocket("/ws/trades")
-async def websocket_trades(websocket: WebSocket):
-    await websocket.accept()
-    print("🔗 WebSocket connected: /ws/trades")
-    await stream_channel_to_websocket(websocket, "realtime:trades")
-
 @router.websocket("/ws/candles")
-async def websocket_candles(websocket: WebSocket):
+async def websocket_candles(websocket: WebSocket, symbol: str = None):
     await websocket.accept()
-    print("🔗 WebSocket connected: /ws/candles")
+    print(f"🔗 WebSocket connected: /ws/candles for symbol={symbol}")
     await stream_channel_to_websocket(websocket, "realtime:candles")
 
-@router.websocket("/ws/open-interest")
-async def websocket_open_interest(websocket: WebSocket):
+@router.websocket("/ws/trades")
+async def websocket_trades(websocket: WebSocket, symbol: str = None):
     await websocket.accept()
-    print("🔗 WebSocket connected: /ws/open-interest")
+    print(f"🔗 WebSocket connected: /ws/trades for symbol={symbol}")
+    await stream_channel_to_websocket(websocket, "realtime:trades")
+
+@router.websocket("/ws/open-interest")
+async def websocket_open_interest(websocket: WebSocket, symbol: str = None):
+    await websocket.accept()
+    print(f"🔗 WebSocket connected: /ws/open-interest for symbol={symbol}")
     await stream_channel_to_websocket(websocket, "realtime:open_interest")
 
 @router.websocket("/ws/orderbook")
-async def websocket_orderbook(websocket: WebSocket):
+async def websocket_orderbook(websocket: WebSocket, symbol: str = None):
     await websocket.accept()
-    print("🔗 WebSocket connected: /ws/orderbook")
+    print(f"🔗 WebSocket connected: /ws/orderbook for symbol={symbol}")
     await stream_channel_to_websocket(websocket, "realtime:orderbook")
 
 @router.websocket("/ws/funding-rate")
-async def websocket_funding_rate(websocket: WebSocket):
+async def websocket_funding_rate(websocket: WebSocket, symbol: str = None):
     await websocket.accept()
-    print("🔗 WebSocket connected: /ws/funding-rate")
+    print(f"🔗 WebSocket connected: /ws/funding-rate for symbol={symbol}")
     await stream_channel_to_websocket(websocket, "realtime:funding_rate")
 
 @router.websocket("/ws/ticker")
-async def websocket_ticker(websocket: WebSocket):
+async def websocket_ticker(websocket: WebSocket, symbol: str = None):
     await websocket.accept()
-    print("🔗 WebSocket connected: /ws/ticker")
+    print(f"🔗 WebSocket connected: /ws/ticker for symbol={symbol}")
     await stream_channel_to_websocket(websocket, "realtime:ticker")
 
 # Include router
