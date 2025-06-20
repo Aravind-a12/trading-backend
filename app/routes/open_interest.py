@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter,HTTPException,Query
 from app.utils.redis_client import redis_client
 import json
 
@@ -21,3 +21,18 @@ def get_open_interest_in_range(start_ts: int, end_ts: int):
 def paginate_open_interest(start: int = 0, end: int = 9):
     oi = redis_client.zrevrange("open_interest", start, end)
     return [json.loads(entry) for entry in oi]
+
+@router.get("/symbol")
+def get_open_interest_by_symbol(
+    symbol: str = Query(..., description="Trading symbol like BTCUSDT")
+):
+    try:
+        oi = redis_client.zrevrange("open_interest", 0, -1)
+        filtered_oi = [
+            json.loads(entry)
+            for entry in oi
+            if json.loads(entry).get("symbol") == symbol
+        ]
+        return filtered_oi
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Redis Error: {e}")

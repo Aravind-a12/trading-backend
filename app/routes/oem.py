@@ -1,23 +1,49 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException,Query
 from app.utils.redis_client import redis_client
 import json
 
 router = APIRouter()
+REDIS_KEY = "oem_device_logs"
 
 @router.get("/")
 def get_latest_oem_logs(limit: int = 10):
-    oem_logs = redis_client.lrange("oem_logs", 0, limit - 1)
-    return [json.loads(oem_log) for oem_log in oem_logs]
+    try:
+        oem_logs = redis_client.lrange(REDIS_KEY, 0, limit - 1)
+        return [json.loads(oem_log) for oem_log in oem_logs]
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Redis Error: {e}")
 
 @router.get("/range")
 def get_oem_logs_in_range(start_ts: int, end_ts: int):
-    # OEM logs are typically stored as a list, so you might need to adjust depending on how they are stored
-    oem_logs = redis_client.lrange("oem_logs", 0, -1)  # Get all and filter by timestamp
-    oem_logs_in_range = [json.loads(log) for log in oem_logs if start_ts <= int(json.loads(log)["timestamp"]) <= end_ts]
-    return oem_logs_in_range
+    try:
+        oem_logs = redis_client.lrange(REDIS_KEY, 0, -1)
+        return [
+            json.loads(log)
+            for log in oem_logs
+            if start_ts <= int(json.loads(log)["timestamp"]) <= end_ts
+        ]
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error filtering logs: {e}")
 
-# ✅ Paginate using index
 @router.get("/paginate")
 def paginate_oem_logs(start: int = 0, end: int = 9):
-    oem_logs = redis_client.lrange("oem_logs", start, end)
-    return [json.loads(oem_log) for oem_log in oem_logs]
+    try:
+        oem_logs = redis_client.lrange(REDIS_KEY, start, end)
+        return [json.loads(oem_log) for oem_log in oem_logs]
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Redis Error: {e}")
+    
+@router.get("/symbol")
+def get_oem_logs_by_symbol(
+    symbol: str = Query(..., description="Trading symbol like BTCUSDT")
+):
+    try:
+        oem_logs = redis_client.lrange(REDIS_KEY, 0, -1)
+        filtered_logs = [
+            json.loads(log)
+            for log in oem_logs
+            if json.loads(log).get("symbol") == symbol
+        ]
+        return filtered_logs
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Redis Error: {e}")
