@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter,HTTPException,Query
 from app.utils.redis_client import redis_client
 import json
 
@@ -23,3 +23,18 @@ def get_order_book_in_range(start_ts: int, end_ts: int):
 def paginate_order_book(start: int = 0, end: int = 9):
     order_books = redis_client.zrevrange("order_book_snapshots", start, end)
     return [json.loads(order_book) for order_book in order_books]
+
+@router.get("/symbol")
+def get_order_book_by_symbol(
+    symbol: str = Query(..., description="Trading symbol like BTCUSDT")
+):
+    try:
+        order_books = redis_client.zrevrange("order_book_snapshots", 0, -1)
+        filtered_books = [
+            json.loads(entry)
+            for entry in order_books
+            if json.loads(entry).get("symbol") == symbol
+        ]
+        return filtered_books
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Redis Error: {e}")

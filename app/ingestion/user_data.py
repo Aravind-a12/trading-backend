@@ -27,7 +27,7 @@ def sign(params: dict, secret: str) -> str:
     return f"{query_string}&signature={signature}"
   
 # --------------------FUNCTION FOR ACCOUNT BALANCE--------------- 
-def get_futures_account_balance_v3():
+def get_futures_account_balance_v3(symbol: str | None = None):
     url = f"{FUTURES_BASE_URL}{ACC_BALANCE_ENDPOINT}"
     timestamp = int(time.time() * 1000)
     params = {
@@ -45,11 +45,18 @@ def get_futures_account_balance_v3():
             response = client.get(full_url, headers=headers)
             response.raise_for_status()
             data = response.json()
+
+            # Optional filter by symbol
+            if symbol:
+                return [item for item in data if item.get("asset") == symbol]
+
             return data
         except httpx.HTTPStatusError as e:
             print(f"HTTP error: {e.response.status_code} - {e.response.text}")
+            return {"error": f"{e.response.status_code}: {e.response.text}"}
         except Exception as e:
             print(f"Error fetching balance: {e}")
+            return {"error": str(e)}
             
 # --------------------FUNCTION FOR GETTING ALL THE ORDERS---------------           
 def get_all_the_orders(symbol: str):
@@ -206,5 +213,4 @@ if __name__ == "__main__":
     if trade_history:
       print(trade_history) 
     else:
-      print("No Trade history found")  
-   
+      print("No Trade history found")

@@ -37,3 +37,15 @@ def get_candles_in_range(
 def paginate_candles(start: int = 0, end: int = 9):
     candles = redis_client.zrevrange("candles", start, end)
     return [json.loads(c) for c in candles]
+
+@router.get("/symbol")
+def get_latest_candles_by_symbol(
+    symbol: str = Query(..., description="Trading symbol like BTCUSDT")
+):
+    redis_key = f"candles:{symbol}"
+    try:
+        candles = redis_client.zrevrange(redis_key, 0, -1)
+        return [json.loads(candle) for candle in candles]
+    except Exception as e:
+        logger.error(f"Error in get_latest_candles_by_symbol: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail="Internal server error")
