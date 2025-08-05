@@ -35,7 +35,7 @@ app.include_router(order_manage.router, prefix="/api/order_manage")
 
 # ✅ Include WebSocket router
 app.include_router(websocket.router)
-
+    
 @app.get("/")
 def root():
     return {"message": "Trading backend API is running 🚀"}

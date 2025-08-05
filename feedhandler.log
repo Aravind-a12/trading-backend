@@ -1286,3 +1286,389 @@ RuntimeError: no running event loop
 2025-05-22 18:44:24,843 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
 2025-05-23 19:29:22,948 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
 2025-05-26 11:24:31,189 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-05-26 18:27:41,506 : ERROR : BINANCE_FUTURES: Failed to parse symbol information: HTTPSConnectionPool(host='fapi.binance.com', port=443): Max retries exceeded with url: /fapi/v1/exchangeInfo (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001B1AA5A2290>: Failed to resolve 'fapi.binance.com' ([Errno 11001] getaddrinfo failed)"))
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\socket.py", line 955, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connection.py", line 704, in connect
+    self.sock = sock = self._new_conn()
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x000001B1AA5A2290>: Failed to resolve 'fapi.binance.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='fapi.binance.com', port=443): Max retries exceeded with url: /fapi/v1/exchangeInfo (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001B1AA5A2290>: Failed to resolve 'fapi.binance.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\exchange.py", line 103, in symbol_mapping
+    data.append(cls.http_sync.read(addr, json=True, headers=headers, uuid=cls.id))
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection.py", line 56, in read
+    r = requests.get(address, headers=headers, params=params)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\requests\adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='fapi.binance.com', port=443): Max retries exceeded with url: /fapi/v1/exchangeInfo (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001B1AA5A2290>: Failed to resolve 'fapi.binance.com' ([Errno 11001] getaddrinfo failed)"))
+2025-05-26 18:41:57,478 : ERROR : BINANCE_FUTURES.ws.2: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection.py", line 111, in connect
+    yield self
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 56, in _create_connection
+    async with self.conn.connect() as connection:
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 217, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection.py", line 113, in connect
+    await self.close()
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection.py", line 126, in close
+    await conn.close()
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\websockets\asyncio\connection.py", line 635, in close
+    async with self.send_context():
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\contextlib.py", line 206, in __aexit__
+    await anext(self.gen)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\websockets\asyncio\connection.py", line 939, in send_context
+    async with asyncio_timeout_at(self.close_deadline):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\websockets\asyncio\async_timeout.py", line 108, in timeout_at
+    loop = asyncio.get_running_loop()
+RuntimeError: no running event loop
+2025-05-26 18:51:52,901 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-05-27 16:48:30,960 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-05-27 17:02:14,950 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-05-27 18:56:40,529 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-05-29 17:25:30,397 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-05-30 16:26:36,725 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-05-30 17:18:08,988 : WARNING : BINANCE_FUTURES.ws.2: encountered connection issue no close frame received or sent - reconnecting in 1.0 seconds...
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 95, in _handler
+    async for message in connection.read():
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection.py", line 339, in read
+    async for data in self.conn:
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\websockets\asyncio\connection.py", line 242, in __aiter__
+    yield await self.recv()
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\websockets\asyncio\connection.py", line 322, in recv
+    raise self.protocol.close_exc from self.recv_exc
+websockets.exceptions.ConnectionClosedError: no close frame received or sent
+2025-05-30 17:18:21,738 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-05-30 17:23:38,482 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-05-30 17:28:39,661 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-06-03 11:48:14,984 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-06-03 17:17:14,090 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-07-21 15:44:42,863 : WARNING : BINANCE_FUTURES.http.1.http.1: encountered connection issue Cannot connect to host fapi.binance.com:443 ssl:default [Could not contact DNS servers] - reconnecting in 1.0 seconds...
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\aiohttp\resolver.py", line 106, in resolve
+    resp = await self._resolver.getaddrinfo(
+aiodns.error.DNSError: (11, 'Could not contact DNS servers')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\aiohttp\connector.py", line 1351, in _create_direct_connection
+    hosts = await self._resolve_host(host, port, traces=traces)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\aiohttp\connector.py", line 995, in _resolve_host
+    return await asyncio.shield(resolved_host_task)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\aiohttp\connector.py", line 1026, in _resolve_host_with_throttle
+    addrs = await self._resolver.resolve(host, port, family=self._family)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\aiohttp\resolver.py", line 115, in resolve
+    raise OSError(None, msg) from exc
+OSError: [Errno None] Could not contact DNS servers
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 95, in _handler
+    async for message in connection.read():
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection.py", line 259, in read
+    yield await self._read_address(addr, header)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection.py", line 244, in _read_address
+    async with self.conn.get(address, headers=header, proxy=self.proxy) as response:
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\aiohttp\client.py", line 1425, in __aenter__
+    self._resp: _RetType = await self._coro
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\aiohttp\client.py", line 703, in _request
+    conn = await self._connector.connect(
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\aiohttp\connector.py", line 548, in connect
+    proto = await self._create_connection(req, traces, timeout)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\aiohttp\connector.py", line 1056, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\aiohttp\connector.py", line 1357, in _create_direct_connection
+    raise ClientConnectorDNSError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorDNSError: Cannot connect to host fapi.binance.com:443 ssl:default [Could not contact DNS servers]
+2025-07-21 15:47:24,139 : WARNING : BINANCE_FUTURES.ws.2: encountered connection issue no close frame received or sent - reconnecting in 1.0 seconds...
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\asyncio\selector_events.py", line 856, in _read_ready__data_received
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 95, in _handler
+    async for message in connection.read():
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection.py", line 339, in read
+    async for data in self.conn:
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\websockets\asyncio\connection.py", line 242, in __aiter__
+    yield await self.recv()
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\websockets\asyncio\connection.py", line 322, in recv
+    raise self.protocol.close_exc from self.recv_exc
+websockets.exceptions.ConnectionClosedError: no close frame received or sent
+2025-07-21 15:50:24,560 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-07-21 15:58:54,302 : WARNING : BINANCE_FUTURES.ws.2: encountered connection issue no close frame received or sent - reconnecting in 1.0 seconds...
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\asyncio\selector_events.py", line 856, in _read_ready__data_received
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 95, in _handler
+    async for message in connection.read():
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection.py", line 339, in read
+    async for data in self.conn:
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\websockets\asyncio\connection.py", line 242, in __aiter__
+    yield await self.recv()
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\websockets\asyncio\connection.py", line 322, in recv
+    raise self.protocol.close_exc from self.recv_exc
+websockets.exceptions.ConnectionClosedError: no close frame received or sent
+2025-07-21 15:59:00,564 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-07-21 16:03:07,487 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-07-24 15:38:55,314 : ERROR : BINANCE_FUTURES.ws.2: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 261, in message_handler
+    await self._ticker(msg, timestamp)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\exchanges\binance.py", line 219, in _ticker
+    await self.callback(TICKER, t, timestamp)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\testing-backend\trading-backend\app\ingestion\binance_feed.py", line 138, in ticker_callback
+    "last": float(data.last) if data.last else None
+AttributeError: 'cryptofeed.types.Ticker' object has no attribute 'last'
+2025-07-24 15:39:03,212 : ERROR : BINANCE_FUTURES.ws.2: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 261, in message_handler
+    await self._ticker(msg, timestamp)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\exchanges\binance.py", line 219, in _ticker
+    await self.callback(TICKER, t, timestamp)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\testing-backend\trading-backend\app\ingestion\binance_feed.py", line 138, in ticker_callback
+    "last": float(data.last) if data.last else None
+AttributeError: 'cryptofeed.types.Ticker' object has no attribute 'last'
+2025-07-24 15:39:14,495 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-07-24 15:39:26,551 : ERROR : BINANCE_FUTURES.ws.2: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 261, in message_handler
+    await self._ticker(msg, timestamp)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\exchanges\binance.py", line 219, in _ticker
+    await self.callback(TICKER, t, timestamp)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\testing-backend\trading-backend\app\ingestion\binance_feed.py", line 138, in ticker_callback
+    "last": float(data.last) if data.last else None
+AttributeError: 'cryptofeed.types.Ticker' object has no attribute 'last'
+2025-07-24 15:39:35,698 : ERROR : BINANCE_FUTURES.ws.2: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 261, in message_handler
+    await self._ticker(msg, timestamp)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\exchanges\binance.py", line 219, in _ticker
+    await self.callback(TICKER, t, timestamp)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\testing-backend\trading-backend\app\ingestion\binance_feed.py", line 138, in ticker_callback
+    "last": float(data.last) if data.last else None
+AttributeError: 'cryptofeed.types.Ticker' object has no attribute 'last'
+2025-07-24 15:39:47,683 : ERROR : BINANCE_FUTURES.ws.2: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 261, in message_handler
+    await self._ticker(msg, timestamp)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\exchanges\binance.py", line 219, in _ticker
+    await self.callback(TICKER, t, timestamp)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\testing-backend\trading-backend\app\ingestion\binance_feed.py", line 138, in ticker_callback
+    "last": float(data.last) if data.last else None
+AttributeError: 'cryptofeed.types.Ticker' object has no attribute 'last'
+2025-07-24 15:39:54,929 : ERROR : BINANCE_FUTURES.ws.2: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 261, in message_handler
+    await self._ticker(msg, timestamp)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\exchanges\binance.py", line 219, in _ticker
+    await self.callback(TICKER, t, timestamp)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\testing-backend\trading-backend\app\ingestion\binance_feed.py", line 138, in ticker_callback
+    "last": float(data.last) if data.last else None
+AttributeError: 'cryptofeed.types.Ticker' object has no attribute 'last'
+2025-07-24 15:40:02,132 : ERROR : BINANCE_FUTURES.ws.2: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 261, in message_handler
+    await self._ticker(msg, timestamp)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\exchanges\binance.py", line 219, in _ticker
+    await self.callback(TICKER, t, timestamp)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\testing-backend\trading-backend\app\ingestion\binance_feed.py", line 138, in ticker_callback
+    "last": float(data.last) if data.last else None
+AttributeError: 'cryptofeed.types.Ticker' object has no attribute 'last'
+2025-07-24 15:40:10,843 : ERROR : BINANCE_FUTURES.ws.2: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 261, in message_handler
+    await self._ticker(msg, timestamp)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\exchanges\binance.py", line 219, in _ticker
+    await self.callback(TICKER, t, timestamp)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\testing-backend\trading-backend\app\ingestion\binance_feed.py", line 138, in ticker_callback
+    "last": float(data.last) if data.last else None
+AttributeError: 'cryptofeed.types.Ticker' object has no attribute 'last'
+2025-07-24 15:40:22,106 : ERROR : BINANCE_FUTURES.ws.2: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 261, in message_handler
+    await self._ticker(msg, timestamp)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\exchanges\binance.py", line 219, in _ticker
+    await self.callback(TICKER, t, timestamp)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\testing-backend\trading-backend\app\ingestion\binance_feed.py", line 138, in ticker_callback
+    "last": float(data.last) if data.last else None
+AttributeError: 'cryptofeed.types.Ticker' object has no attribute 'last'
+2025-07-24 15:40:33,179 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-07-24 15:48:59,036 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-07-24 15:49:10,474 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-07-24 21:01:40,322 : ERROR : FH: Unhandled OSError(10055, 'An operation on a socket could not be performed because the system lacked sufficient buffer space or because a queue was full', None, 10055, None) - shutting down
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 595, in run_forever
+    self._run_once()
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 1845, in _run_once
+    event_list = self._selector.select(timeout)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\selectors.py", line 324, in select
+    r, w, _ = self._select(self._readers, self._writers, [], timeout)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\selectors.py", line 315, in _select
+    r, w, x = select.select(r, w, w, timeout)
+OSError: [WinError 10055] An operation on a socket could not be performed because the system lacked sufficient buffer space or because a queue was full
+2025-07-24 21:01:42,439 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-07-24 21:04:25,132 : ERROR : FH: Unhandled RuntimeError('This event loop is already running') - shutting down
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\feedhandler.py", line 151, in run
+    loop.run_forever()
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 585, in run_forever
+    self._check_running()
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\asyncio\base_events.py", line 577, in _check_running
+    raise RuntimeError('This event loop is already running')
+RuntimeError: This event loop is already running
+2025-07-24 21:11:55,643 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()
+2025-07-24 21:13:01,314 : ERROR : BINANCE_FUTURES.ws.2: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 261, in message_handler
+    await self._ticker(msg, timestamp)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\exchanges\binance.py", line 219, in _ticker
+    await self.callback(TICKER, t, timestamp)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\testing-backend\trading-backend\app\ingestion\binance_feed.py", line 138, in ticker_callback
+    "last": float(data.last) if data.last else None
+AttributeError: 'cryptofeed.types.Ticker' object has no attribute 'last'
+2025-07-24 21:13:11,217 : ERROR : BINANCE_FUTURES.ws.2: encountered an exception, reconnecting in 1.0 seconds
+Traceback (most recent call last):
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 65, in _create_connection
+    await self._handler(connection, self.handler)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\connection_handler.py", line 99, in _handler
+    await handler(message, connection, self.conn.last_message)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\exchanges\binance_futures.py", line 261, in message_handler
+    await self._ticker(msg, timestamp)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\exchanges\binance.py", line 219, in _ticker
+    await self.callback(TICKER, t, timestamp)
+  File "C:\Users\Aravind\AppData\Local\Programs\Python\Python310\lib\site-packages\cryptofeed\feed.py", line 258, in callback
+    await cb(obj, receipt_timestamp)
+  File "C:\Users\Aravind\testing-backend\trading-backend\app\ingestion\binance_feed.py", line 138, in ticker_callback
+    "last": float(data.last) if data.last else None
+AttributeError: 'cryptofeed.types.Ticker' object has no attribute 'last'
+2025-07-28 11:54:18,195 : ERROR : BINANCE_FUTURES.http.1.http.1: connection closed in read()

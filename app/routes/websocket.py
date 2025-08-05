@@ -10,64 +10,61 @@ app = FastAPI()
 router = APIRouter()
 
 # Redis async client
-redis_client = redis.Redis(host="localhost", port=6379, decode_responses=True)
+# In your FastAPI backend file (where you define redis_client)
+redis_client = redis.Redis(
+    host="localhost",
+    port=6379,
+    password="1234",  # ✅ match this with publisher
+    decode_responses=True
+)
 
-# Utility to stream Redis pub/sub to WebSocket and convert timestamps
-async def stream_channel_to_websocket(websocket: WebSocket, channel_name: str):
+async def stream_channel_to_websocket(websocket: WebSocket, channel: str):
     pubsub = redis_client.pubsub()
-    await pubsub.subscribe(channel_name)
-
+    await pubsub.subscribe(channel)
     try:
         while True:
-            try:
-                message = await pubsub.get_message(ignore_subscribe_messages=True, timeout=5.0)
+            message = await pubsub.get_message(ignore_subscribe_messages=True, timeout=5.0)
+            if message and message["type"] == "message":
+                try:
+                    data = json.loads(message["data"])
+                    if "timestamp" in data:
+                        if isinstance(data["timestamp"], str):
+                            data["timestamp"] = int(isoparse(data["timestamp"]).timestamp() * 1000)
+                        elif isinstance(data["timestamp"], (int, float)):
+                            data["timestamp"] = int(float(data["timestamp"]) * 1000)
 
-                if message and message["type"] == "message":
-                    try:
-                        data = json.loads(message["data"])
-
-                        # Convert ISO timestamp to epoch milliseconds if needed
-                        if "timestamp" in data:
-                            if isinstance(data["timestamp"], str):
-                                try:
-                                    data["timestamp"] = int(isoparse(data["timestamp"]).timestamp() * 1000)
-                                except Exception as e:
-                                    print(f"❌ Timestamp parsing error: {e}")
-                                    continue
-                            elif isinstance(data["timestamp"], (int, float)):
-                                data["timestamp"] = int(float(data["timestamp"]) * 1000)
-
-                        # ✅ Check if WebSocket is still open before sending
-                        if websocket.application_state == WebSocketState.CONNECTED:
-                            await websocket.send_text(json.dumps(data))
-                        else:
-                            print(f"⚠️ WebSocket closed, stopping stream for {channel_name}")
-                            break
-
-                    except Exception as e:
-                        print(f"❌ Error processing message: {e}")
-                        continue  # Continue on non-fatal error
-
-                await asyncio.sleep(0.01)
-
-            except CancelledError:
-                print(f"⚠️ Stream cancelled for {channel_name}")
-                break
-
+                    if websocket.application_state == WebSocketState.CONNECTED:
+                        print("📤 Sending to WebSocket:", data)
+                        await websocket.send_text(json.dumps(data))
+                    else:
+                        break
+                except Exception as e:
+                    print(f"❌ Data parse error: {e}")
+            await asyncio.sleep(0.01)
     except WebSocketDisconnect:
-        print(f"🔌 Client disconnected from {channel_name}")
-    except Exception as e:
-        print(f"❌ Unexpected error in stream: {e}")
+        print("🔌 Client disconnected")
     finally:
-        await pubsub.unsubscribe(channel_name)
+        await pubsub.unsubscribe(channel)
         await pubsub.close()
 
-# WebSocket endpoints
+
+
 @router.websocket("/ws/candles")
-async def websocket_candles(websocket: WebSocket, symbol: str = None):
+async def websocket_candles(websocket: WebSocket):
     await websocket.accept()
-    print(f"🔗 WebSocket connected: /ws/candles for symbol={symbol}")
-    await stream_channel_to_websocket(websocket, "realtime:candles")
+    symbol = websocket.query_params.get("symbol")
+    interval = websocket.query_params.get("interval")
+
+    if not symbol or not interval:
+        await websocket.close()
+        print("❌ Missing symbol or interval")
+        return
+
+    redis_channel = f"realtime:candles:{symbol}:{interval}"
+    print(f"🔗 WS connected: {redis_channel}")
+    await stream_channel_to_websocket(websocket, redis_channel)
+
+
 
 @router.websocket("/ws/trades")
 async def websocket_trades(websocket: WebSocket, symbol: str = None):

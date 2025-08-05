@@ -6,7 +6,7 @@ import os
 from dotenv import load_dotenv
 from urllib.parse import urlencode
 
-# Load variables from .env
+# Load environment variables from .env file
 load_dotenv()
 
 # Get environment variables
@@ -30,7 +30,7 @@ def place_futures_order(
     price: float = None,
     timeInForce: str = "GTC"
 ):
-    # If any param is missing, fallback to CLI input for manual usage
+    # Manual input fallback (for CLI usage)
     if symbol is None:
         symbol = input("Enter trading pair (e.g., BTCUSDT): ").strip()
     if side is None:
@@ -40,8 +40,7 @@ def place_futures_order(
     if quantity is None:
         quantity = float(input("Enter quantity: "))
 
-    # Handle LIMIT order specific input
-    if order_type.upper() == "LIMIT":
+    if order_type == "LIMIT":
         if price is None:
             price = float(input("Enter price: "))
         if not timeInForce:
@@ -55,12 +54,11 @@ def place_futures_order(
         "side": side.upper(),
         "type": order_type.upper(),
         "quantity": quantity,
-        "timestamp": timestamp
+        "timestamp": timestamp,
+        "recvWindow": 10000  # 10 seconds to account for clock skew
     }
 
     if order_type.upper() == "LIMIT":
-        if price is None:
-            raise ValueError("Missing required parameter 'price' for LIMIT order")
         params["price"] = price
         params["timeInForce"] = timeInForce.upper()
 
@@ -87,7 +85,6 @@ def cancel_futures_order(
     order_id: int = None,
     orig_client_order_id: str = None
 ):
-    # If called via CLI
     if symbol is None:
         symbol = input("Enter trading pair (e.g., BTCUSDT): ").strip()
 
@@ -106,7 +103,8 @@ def cancel_futures_order(
 
     params = {
         "symbol": symbol.upper(),
-        "timestamp": timestamp
+        "timestamp": timestamp,
+        "recvWindow": 10000  # Add recvWindow here too
     }
 
     if order_id:
@@ -133,7 +131,7 @@ def cancel_futures_order(
         except Exception as e:
             raise Exception(f"Error canceling order: {e}")
 
-# ------------------- Main logic ------------------------------------------
+# ------------------- Main CLI logic --------------------------------------
 if __name__ == "__main__":
     action = input("Do you want to place or cancel an order? (place/cancel): ").strip().lower()
     if action == "place":
