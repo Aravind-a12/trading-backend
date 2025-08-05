@@ -6,6 +6,7 @@ from app.routes import (
 )
 from app.routes.orderbook import router as orderbook_router
 from app.ingestion.user_stream import start_user_stream
+from auth_service.routers import auth
 import asyncio
 
 app = FastAPI()
@@ -35,6 +36,9 @@ app.include_router(order_manage.router, prefix="/api/order_manage")
 
 # ✅ Include WebSocket router
 app.include_router(websocket.router)
+
+# Include Authentication router
+app.include_router(auth.router, prefix="/auth")
     
 @app.get("/")
 def root():
