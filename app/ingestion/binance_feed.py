@@ -1,16 +1,20 @@
 import logging
 import asyncio
-from datetime import datetime
+from datetime import datetime, timedelta
 import redis.asyncio as redis
 import json
 import decimal
 from cryptofeed import FeedHandler
-from cryptofeed.exchanges import BinanceFutures
-from cryptofeed.defines import TRADES, OPEN_INTEREST, L2_BOOK, FUNDING, TICKER
+from cryptofeed.exchanges import Binance
+from cryptofeed.defines import TRADES, OPEN_INTEREST, L2_BOOK
 
-# Configure logging
+
 logging.basicConfig(level=logging.INFO)
-logging.getLogger('cryptofeed').setLevel(logging.DEBUG)
+logging.getLogger("cryptofeed").setLevel(logging.WARNING)
+
+
+redis_client = redis.Redis(host='localhost', port=6379, password='1234', decode_responses=True)
+
 
 class DecimalEncoder(json.JSONEncoder):
     def default(self, obj):
@@ -18,156 +22,153 @@ class DecimalEncoder(json.JSONEncoder):
             return float(obj)
         return super().default(obj)
 
-redis_client = redis.Redis(host='localhost', port=6379, decode_responses=True)
 
-async def check_redis_connection():
-    try:
-        await redis_client.ping()
-        print("✅ Redis Connected Successfully!")
-    except Exception as e:
-        print(f"❌ Redis Connection Error: {e}")
-        exit()
+INTERVALS = {
+    "1m": 60,
+    "5m": 300,
+    "15m": 900,
+    "30m": 1800,
+    "1h": 3600,
+    "1d": 86400,
+    "W": 604800,
+    "1W": 604800,
+    "M": 2592000,  # Note: used only as label; flooring logic will use calendar month
+    "1M": 2592000,
+}
+
+
+candle_data = {interval: {} for interval in INTERVALS}
+
+
+def normalize_symbol(symbol: str) -> str:
+    return symbol.replace("/", "").replace("-", "").lower()
+
+
+def floor_timestamp(timestamp: int, interval_name: str) -> int:
+    dt = datetime.utcfromtimestamp(timestamp)
+    if interval_name in ['1m', '5m', '15m', '30m', '1h', '1d']:
+        interval_sec = INTERVALS[interval_name]
+        floored_sec = (timestamp // interval_sec) * interval_sec
+        return floored_sec
+    elif interval_name in ['W', '1W']:
+        # Floor to Monday 00:00:00 UTC of the current week
+        start_of_week = dt - timedelta(days=dt.weekday(),
+                                       hours=dt.hour,
+                                       minutes=dt.minute,
+                                       seconds=dt.second,
+                                       microseconds=dt.microsecond)
+        return int(start_of_week.timestamp())
+    elif interval_name in ['M', '1M']:
+        # Floor to the first day of the month 00:00:00 UTC
+        start_of_month = datetime(year=dt.year, month=dt.month, day=1)
+        return int(start_of_month.timestamp())
+    else:
+        # fallback: no flooring
+        return timestamp
+
 
 async def publish_and_store(channel: str, redis_key: str, data: dict, score: float, encoder=None):
     try:
         json_data = json.dumps(data, cls=encoder)
         await redis_client.zadd(redis_key, {json_data: score})
         await redis_client.publish(channel, json_data)
-        print(f"✅ Stored and Published to {channel}")
+        print(f"✅ Published to {channel}: {data}")
     except Exception as e:
         print(f"❌ Redis Error ({channel}): {e}")
 
-# Candle state holder
-candle_data = {}
 
-def normalize_symbol(symbol: str) -> str:
-    return symbol.replace("/", "").replace("-", "").lower()
-
-# TRADE CALLBACK
 async def trade_callback(trade, receipt_timestamp):
-    global candle_data
     raw_symbol = trade.symbol
     symbol = normalize_symbol(raw_symbol)
-
     timestamp = int(trade.timestamp)
-    candle_timestamp = timestamp // 60 * 60  # minute start
-
     price = float(trade.price)
     volume = float(trade.amount)
-    side = trade.side
 
-    # Store Trade Data
     trade_data = {
         "symbol": raw_symbol,
         "timestamp": datetime.utcfromtimestamp(timestamp).isoformat(),
         "price": price,
         "volume": volume,
-        "side": side
+        "side": trade.side,
     }
-    await publish_and_store("realtime:trades", f"trades:{symbol}", trade_data, timestamp)
 
-    # Update or create the current minute's candle
-    key = f"candles:{symbol}"
-    channel = "realtime:candles"
+    await publish_and_store(f"realtime:trades", f"trades:{symbol}", trade_data, timestamp)
 
-    if candle_timestamp not in candle_data:
-        candle_data[candle_timestamp] = {
-            "symbol": raw_symbol,
-            "timestamp": datetime.utcfromtimestamp(candle_timestamp),
-            "open": price,
-            "high": price,
-            "low": price,
-            "close": price,
-            "volume": volume
-        }
-    else:
-        candle = candle_data[candle_timestamp]
-        candle["high"] = max(candle["high"], price)
-        candle["low"] = min(candle["low"], price)
-        candle["close"] = price
-        candle["volume"] += volume
+    for interval_name in INTERVALS:
+        ts_floor = floor_timestamp(timestamp, interval_name)
+        ts_floor_ms = ts_floor * 1000
 
-    # Push the updated candle on every trade
-    current_candle = candle_data[candle_timestamp].copy()
-    current_candle["timestamp"] = current_candle["timestamp"].isoformat()
-    await publish_and_store(channel, key, current_candle, candle_timestamp)
+        redis_key = f"candles:{symbol}:{interval_name}"
+        channel = f"realtime:candles:{symbol}:{interval_name}"
 
-# OPEN INTEREST CALLBACK
-async def open_interest_callback(data, receipt_timestamp):
+        if ts_floor not in candle_data[interval_name]:
+            candle_data[interval_name][ts_floor] = {
+                "symbol": raw_symbol,
+                "timestamp": ts_floor_ms,
+                "open": price,
+                "high": price,
+                "low": price,
+                "close": price,
+                "volume": volume
+            }
+        else:
+            c = candle_data[interval_name][ts_floor]
+            c["high"] = max(c["high"], price)
+            c["low"] = min(c["low"], price)
+            c["close"] = price
+            c["volume"] += volume
+
+        current = candle_data[interval_name][ts_floor].copy()
+        await publish_and_store(channel, redis_key, current, ts_floor)
+
+
+async def open_interest_callback(data, ts):
     symbol = normalize_symbol(data.symbol)
-    oi_data = {
+    oi = {
         "symbol": data.symbol,
         "timestamp": datetime.utcfromtimestamp(data.timestamp).isoformat(),
         "open_interest": float(data.open_interest)
     }
-    await publish_and_store("realtime:open_interest", f"open_interest:{symbol}", oi_data, data.timestamp)
+    await publish_and_store("realtime:open_interest", f"open_interest:{symbol}", oi, data.timestamp)
 
-# ORDER BOOK CALLBACK
-async def order_book_callback(book, receipt_timestamp):
-    try:
-        symbol = normalize_symbol(book.symbol)
-        bids = list(book.book.bids)[:10]
-        asks = list(book.book.asks)[:10]
 
-        ob_data = {
-            "symbol": book.symbol,
-            "timestamp": datetime.utcnow().isoformat(),
-            "bids": [(float(price), float(book.book.bids[price])) for price in bids],
-            "asks": [(float(price), float(book.book.asks[price])) for price in asks]
-        }
-
-        await publish_and_store("realtime:orderbook", f"order_book_snapshots:{symbol}", ob_data, receipt_timestamp, DecimalEncoder)
-    except Exception as e:
-        print(f"❌ Redis Insert Error (Order Book): {e}")
-
-# FUNDING RATE CALLBACK
-async def funding_rate_callback(data, receipt_timestamp):
-    symbol = normalize_symbol(data.symbol)
-    funding_data = {
-        "symbol": data.symbol,
-        "timestamp": datetime.utcfromtimestamp(data.timestamp).isoformat(),
-        "rate": float(data.rate),
-        "interval": getattr(data, 'interval', None)
+async def order_book_callback(book, ts):
+    symbol = normalize_symbol(book.symbol)
+    bids = list(book.book.bids)[:10]
+    asks = list(book.book.asks)[:10]
+    ob = {
+        "symbol": book.symbol,
+        "timestamp": datetime.utcnow().isoformat(),
+        "bids": [(float(p), float(book.book.bids[p])) for p in bids],
+        "asks": [(float(p), float(book.book.asks[p])) for p in asks],
     }
-    await publish_and_store("realtime:funding_rate", f"funding_rate:{symbol}", funding_data, data.timestamp)
+    await publish_and_store("realtime:orderbook", f"order_book_snapshots:{symbol}", ob, ts, DecimalEncoder)
 
-# TICKER CALLBACK
-async def ticker_callback(data, receipt_timestamp):
-    symbol = normalize_symbol(data.symbol)
-    ticker_data = {
-        "symbol": data.symbol,
-        "timestamp": datetime.utcfromtimestamp(data.timestamp).isoformat(),
-        "bid": float(data.bid),
-        "ask": float(data.ask),
-        "last": getattr(data, 'last', None)
-    }
-    await publish_and_store("realtime:ticker", f"ticker:{symbol}", ticker_data, data.timestamp)
 
-# MAIN FUNCTION
 def main():
     f = FeedHandler()
-    f.add_feed(BinanceFutures(
-        symbols=['BTC-USDT-PERP'],
-        channels=[TRADES, OPEN_INTEREST, L2_BOOK, FUNDING, TICKER],
+    f.add_feed(Binance(
+        symbols=["BTC-USDT"],
+        channels=[TRADES, L2_BOOK],
         callbacks={
             TRADES: trade_callback,
-            OPEN_INTEREST: open_interest_callback,
-            L2_BOOK: order_book_callback,
-            FUNDING: funding_rate_callback,
-            TICKER: ticker_callback,
+            L2_BOOK: order_book_callback
         }
     ))
-    print("📡 Binance Futures Feed started... waiting for data")
+    print("📡 Binance Spot Feed Started")
     f.run()
 
-# ENTRY POINT
+
 if __name__ == "__main__":
     if hasattr(asyncio, 'WindowsSelectorEventLoopPolicy'):
         asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
-    loop = asyncio.new_event_loop()
-    asyncio.set_event_loop(loop)
-
-    loop.run_until_complete(check_redis_connection())
+    try:
+        loop = asyncio.get_event_loop()
+        loop.run_until_complete(redis_client.ping())
+        print("✅ Redis Connected")
+    except Exception as e:
+        print(f"❌ Redis Connection Failed: {e}")
+        exit(1)
 
     main()
