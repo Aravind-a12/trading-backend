@@ -1,11 +1,20 @@
 import asyncio
 from datetime import datetime, timedelta
+import os
 import redis.asyncio as redis
 import requests
 from cryptofeed.exchanges import BinanceFutures
 import time
 
-redis_client = redis.Redis(host='localhost', port=6379, decode_responses=True)
+_redis_host = os.getenv("REDIS_HOST", "127.0.0.1")
+_redis_port = int(os.getenv("REDIS_PORT", "6379"))
+_redis_password = os.getenv("REDIS_PASSWORD")
+redis_client = redis.Redis(
+    host=_redis_host,
+    port=_redis_port,
+    password=_redis_password,
+    decode_responses=True,
+)
 
 # KLINE DATA FOR FUTURES
 def get_klines_futures(symbol: str, interval: str, limit: int = 100, start_time: int = None, end_time: int = None):

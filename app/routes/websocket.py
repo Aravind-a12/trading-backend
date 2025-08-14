@@ -1,5 +1,6 @@
 from fastapi import FastAPI, APIRouter, WebSocket, WebSocketDisconnect
 from starlette.websockets import WebSocketState
+import os
 import redis.asyncio as redis
 import asyncio
 import json
@@ -9,13 +10,15 @@ from asyncio import CancelledError
 app = FastAPI()
 router = APIRouter()
 
-# Redis async client
-# In your FastAPI backend file (where you define redis_client)
+# Redis async client from env
+_redis_host = os.getenv("REDIS_HOST", "127.0.0.1")
+_redis_port = int(os.getenv("REDIS_PORT", "6379"))
+_redis_password = os.getenv("REDIS_PASSWORD")
 redis_client = redis.Redis(
-    host="localhost",
-    port=6379,
-    password="1234",  # ✅ match this with publisher
-    decode_responses=True
+    host=_redis_host,
+    port=_redis_port,
+    password=_redis_password,
+    decode_responses=True,
 )
 
 async def stream_channel_to_websocket(websocket: WebSocket, channel: str):
@@ -60,7 +63,9 @@ async def websocket_candles(websocket: WebSocket):
         print("❌ Missing symbol or interval")
         return
 
-    redis_channel = f"realtime:candles:{symbol}:{interval}"
+    # Normalize to match publisher format (e.g., BTC-USDT -> btcusdt)
+    normalized_symbol = symbol.replace("/", "").replace("-", "").lower()
+    redis_channel = f"realtime:candles:{normalized_symbol}:{interval}"
     print(f"🔗 WS connected: {redis_channel}")
     await stream_channel_to_websocket(websocket, redis_channel)
 

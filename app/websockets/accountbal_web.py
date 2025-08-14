@@ -9,8 +9,16 @@ load_dotenv()
 
 WS_BASE = 'wss://stream.binancefuture.com/ws'  
 
-# Redis configuration
-redis_client = redis.Redis(host='localhost', port=6379, decode_responses=True)
+# Redis configuration from env
+_redis_host = os.getenv("REDIS_HOST", "127.0.0.1")
+_redis_port = int(os.getenv("REDIS_PORT", "6379"))
+_redis_password = os.getenv("REDIS_PASSWORD")
+redis_client = redis.Redis(
+    host=_redis_host,
+    port=_redis_port,
+    password=_redis_password,
+    decode_responses=True,
+)
 
 async def get_listen_key_from_redis():
     listen_key = await redis_client.get("binance:listen_key")
