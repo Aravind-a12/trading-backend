@@ -1,6 +1,7 @@
 import logging
 import asyncio
 from datetime import datetime, timedelta
+import os
 import redis.asyncio as redis
 import json
 import decimal
@@ -13,7 +14,15 @@ logging.basicConfig(level=logging.INFO)
 logging.getLogger("cryptofeed").setLevel(logging.WARNING)
 
 
-redis_client = redis.Redis(host='localhost', port=6379, password='1234', decode_responses=True)
+_redis_host = os.getenv("REDIS_HOST", "127.0.0.1")
+_redis_port = int(os.getenv("REDIS_PORT", "6379"))
+_redis_password = os.getenv("REDIS_PASSWORD")
+redis_client = redis.Redis(
+    host=_redis_host,
+    port=_redis_port,
+    password=_redis_password,
+    decode_responses=True,
+)
 
 
 class DecimalEncoder(json.JSONEncoder):

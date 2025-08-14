@@ -7,6 +7,7 @@ from app.routes import (
 from app.routes.orderbook import router as orderbook_router
 from app.ingestion.user_stream import start_user_stream
 import asyncio
+import os
 
 app = FastAPI()
 
@@ -42,4 +43,6 @@ def root():
 
 @app.on_event("startup")
 async def on_startup():
-    asyncio.create_task(start_user_stream())
+    enable_user_stream = os.getenv("ENABLE_USER_STREAM", "false").lower() in {"1", "true", "yes"}
+    if enable_user_stream:
+        asyncio.create_task(start_user_stream())
