@@ -21,53 +21,35 @@ redis_client = redis.Redis(
     decode_responses=True,
 )
 
-async def stream_channel_to_websocket(websocket: WebSocket, channel: str):
-    pubsub = redis_client.pubsub()
-    await pubsub.subscribe(channel)
+async def stream_candles_from_sortedset(websocket: WebSocket, key: str):
+    last_score = None
     try:
         while True:
-            message = await pubsub.get_message(ignore_subscribe_messages=True, timeout=5.0)
-            if message and message["type"] == "message":
-                try:
-                    data = json.loads(message["data"])
-                    if "timestamp" in data:
-                        if isinstance(data["timestamp"], str):
-                            data["timestamp"] = int(isoparse(data["timestamp"]).timestamp() * 1000)
-                        elif isinstance(data["timestamp"], (int, float)):
-                            data["timestamp"] = int(float(data["timestamp"]) * 1000)
-
-                    if websocket.application_state == WebSocketState.CONNECTED:
-                        print("📤 Sending to WebSocket:", data)
-                        await websocket.send_text(json.dumps(data))
-                    else:
-                        break
-                except Exception as e:
-                    print(f"❌ Data parse error: {e}")
-            await asyncio.sleep(0.01)
+            # Get the latest candle
+            data_list = await redis_client.zrevrange(key, 0, 0, withscores=True)
+            if data_list:
+                raw_json, score = data_list[0]
+                if score != last_score:
+                    last_score = score
+                    data = json.loads(raw_json)
+                    if isinstance(data["timestamp"], (int, float)) and data["timestamp"] < 10**12:
+                        data["timestamp"] = int(data["timestamp"]) * 1000
+                    await websocket.send_text(json.dumps(data))
+            await asyncio.sleep(1)  # check every second
     except WebSocketDisconnect:
-        print("🔌 Client disconnected")
-    finally:
-        await pubsub.unsubscribe(channel)
-        await pubsub.close()
-
-
+        pass
 
 @router.websocket("/ws/candles")
 async def websocket_candles(websocket: WebSocket):
     await websocket.accept()
     symbol = websocket.query_params.get("symbol")
     interval = websocket.query_params.get("interval")
-
     if not symbol or not interval:
         await websocket.close()
-        print("❌ Missing symbol or interval")
         return
+    key = f"candles:{symbol}:{interval}"
+    await stream_candles_from_sortedset(websocket, key)
 
-    # Normalize to match publisher format (e.g., BTC-USDT -> btcusdt)
-    normalized_symbol = symbol.replace("/", "").replace("-", "").lower()
-    redis_channel = f"realtime:candles:{normalized_symbol}:{interval}"
-    print(f"🔗 WS connected: {redis_channel}")
-    await stream_channel_to_websocket(websocket, redis_channel)
 
 
 
