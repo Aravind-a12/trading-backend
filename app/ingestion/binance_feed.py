@@ -110,7 +110,9 @@ async def trade_callback(trade, receipt_timestamp):
         "side": trade.side,
     }
 
-    await publish_and_store(f"realtime:trades", f"trades:{symbol}", trade_data, timestamp)
+    # Publish to global and per-symbol channels
+    await publish_and_store("realtime:trades", f"trades:{symbol}", trade_data, timestamp)
+    await publish_and_store(f"realtime:trades:{symbol}", f"trades:{symbol}", trade_data, timestamp)
 
     for interval_name in INTERVALS:
         ts_floor = floor_timestamp(timestamp, interval_name)
@@ -147,7 +149,9 @@ async def open_interest_callback(data, ts):
         "timestamp": datetime.utcfromtimestamp(data.timestamp).isoformat(),
         "open_interest": float(data.open_interest)
     }
+    # Publish to global and per-symbol channels
     await publish_and_store("realtime:open_interest", f"open_interest:{symbol}", oi, data.timestamp)
+    await publish_and_store(f"realtime:open_interest:{symbol}", f"open_interest:{symbol}", oi, data.timestamp)
 
 
 async def order_book_callback(book, ts):
@@ -160,7 +164,9 @@ async def order_book_callback(book, ts):
         "bids": [(float(p), float(book.book.bids[p])) for p in bids],
         "asks": [(float(p), float(book.book.asks[p])) for p in asks],
     }
+    # Publish to global and per-symbol channels
     await publish_and_store("realtime:orderbook", f"order_book_snapshots:{symbol}", ob, ts, DecimalEncoder)
+    await publish_and_store(f"realtime:orderbook:{symbol}", f"order_book_snapshots:{symbol}", ob, ts, DecimalEncoder)
 
 
 def main():
