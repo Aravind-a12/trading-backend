@@ -1,8 +1,11 @@
 from fastapi import FastAPI, APIRouter, WebSocket, WebSocketDisconnect
+from starlette.websockets import WebSocketState
 import os
 import redis.asyncio as redis
 import asyncio
 import json
+from dateutil.parser import isoparse
+from asyncio import CancelledError
 
 app = FastAPI()
 router = APIRouter()
@@ -18,111 +21,105 @@ redis_client = redis.Redis(
     decode_responses=True,
 )
 
+def normalize_symbol(raw: str | None) -> str | None:
+    if not raw:
+        return None
+    return raw.replace("/", "").replace("-", "").lower()
 
-# -----------------------------
-# Helper: Candle stream (from sorted set)
-# -----------------------------
-async def stream_candles_from_sortedset(websocket: WebSocket, key: str):
-    last_score = None
-    try:
-        while True:
-            data_list = await redis_client.zrevrange(key, 0, 0, withscores=True)
-            if data_list:
-                raw_json, score = data_list[0]
-                if score != last_score:
-                    last_score = score
-                    data = json.loads(raw_json)
-
-                    # normalize timestamp if needed
-                    if isinstance(data.get("timestamp"), (int, float)) and data["timestamp"] < 10**12:
-                        data["timestamp"] = int(data["timestamp"]) * 1000
-
-                    await websocket.send_text(json.dumps(data))
-
-            # heartbeat to keep connection alive
-            await websocket.send_text(json.dumps({"type": "ping"}))
-            await asyncio.sleep(1)
-    except WebSocketDisconnect:
-        print("❌ WebSocket disconnected: candles")
-    except Exception as e:
-        print(f"⚠️ Candle stream error: {e}")
-
-
-# -----------------------------
-# Helper: Generic pub/sub stream
-# -----------------------------
 async def stream_channel_to_websocket(websocket: WebSocket, channel: str):
     pubsub = redis_client.pubsub()
     await pubsub.subscribe(channel)
-
     try:
-        async for message in pubsub.listen():
-            if message["type"] == "message":
-                data = message["data"]
-                await websocket.send_text(data)
+        while True:
+            message = await pubsub.get_message(ignore_subscribe_messages=True, timeout=5.0)
+            if message and message["type"] == "message":
+                try:
+                    data = json.loads(message["data"])
+                    if "timestamp" in data:
+                        if isinstance(data["timestamp"], str):
+                            data["timestamp"] = int(isoparse(data["timestamp"]).timestamp() * 1000)
+                        elif isinstance(data["timestamp"], (int, float)):
+                            data["timestamp"] = int(float(data["timestamp"]) * 1000)
+
+                    if websocket.application_state == WebSocketState.CONNECTED:
+                        print("📤 Sending to WebSocket:", data)
+                        await websocket.send_text(json.dumps(data))
+                    else:
+                        break
+                except Exception as e:
+                    print(f"❌ Data parse error: {e}")
+            await asyncio.sleep(0.01)
     except WebSocketDisconnect:
-        print(f"❌ WebSocket disconnected from {channel}")
+        print("🔌 Client disconnected")
+    finally:
         await pubsub.unsubscribe(channel)
-    except Exception as e:
-        print(f"⚠️ Error in {channel} stream: {e}")
-        try:
-            await pubsub.unsubscribe(channel)
-        except:
-            pass
+        await pubsub.close()
 
 
-# -----------------------------
-# Routes
-# -----------------------------
+
 @router.websocket("/ws/candles")
 async def websocket_candles(websocket: WebSocket):
     await websocket.accept()
     symbol = websocket.query_params.get("symbol")
     interval = websocket.query_params.get("interval")
+
     if not symbol or not interval:
         await websocket.close()
+        print("❌ Missing symbol or interval")
         return
-    key = f"candles:{symbol}:{interval}"
-    print(f"🔗 WebSocket connected: /ws/candles {symbol} {interval}")
-    await stream_candles_from_sortedset(websocket, key)
+
+    # Normalize to match publisher format (e.g., BTC-USDT -> btcusdt)
+    normalized_symbol = symbol.replace("/", "").replace("-", "").lower()
+    redis_channel = f"realtime:candles:{normalized_symbol}:{interval}"
+    print(f"🔗 WS connected: {redis_channel}")
+    await stream_channel_to_websocket(websocket, redis_channel)
+
 
 
 @router.websocket("/ws/trades")
-async def websocket_trades(websocket: WebSocket):
+async def websocket_trades(websocket: WebSocket, symbol: str = None):
     await websocket.accept()
-    print("🔗 WebSocket connected: /ws/trades")
-    await stream_channel_to_websocket(websocket, "realtime:trades")
-
-
-@router.websocket("/ws/orderbook")
-async def websocket_orderbook(websocket: WebSocket):
-    await websocket.accept()
-    print("🔗 WebSocket connected: /ws/orderbook")
-    await stream_channel_to_websocket(websocket, "realtime:orderbook")
-
+    raw_symbol = websocket.query_params.get("symbol") or symbol
+    sym = normalize_symbol(raw_symbol)
+    channel = f"realtime:trades:{sym}" if sym else "realtime:trades"
+    print(f"🔗 WebSocket connected: /ws/trades channel={channel}")
+    await stream_channel_to_websocket(websocket, channel)
 
 @router.websocket("/ws/open-interest")
-async def websocket_open_interest(websocket: WebSocket):
+async def websocket_open_interest(websocket: WebSocket, symbol: str = None):
     await websocket.accept()
-    print("🔗 WebSocket connected: /ws/open-interest")
-    await stream_channel_to_websocket(websocket, "realtime:open_interest")
+    raw_symbol = websocket.query_params.get("symbol") or symbol
+    sym = normalize_symbol(raw_symbol)
+    channel = f"realtime:open_interest:{sym}" if sym else "realtime:open_interest"
+    print(f"🔗 WebSocket connected: /ws/open-interest channel={channel}")
+    await stream_channel_to_websocket(websocket, channel)
 
+@router.websocket("/ws/orderbook")
+async def websocket_orderbook(websocket: WebSocket, symbol: str = None):
+    await websocket.accept()
+    raw_symbol = websocket.query_params.get("symbol") or symbol
+    sym = normalize_symbol(raw_symbol)
+    channel = f"realtime:orderbook:{sym}" if sym else "realtime:orderbook"
+    print(f"🔗 WebSocket connected: /ws/orderbook channel={channel}")
+    await stream_channel_to_websocket(websocket, channel)
 
 @router.websocket("/ws/funding-rate")
-async def websocket_funding_rate(websocket: WebSocket):
+async def websocket_funding_rate(websocket: WebSocket, symbol: str = None):
     await websocket.accept()
-    print("🔗 WebSocket connected: /ws/funding-rate")
-    await stream_channel_to_websocket(websocket, "realtime:funding_rate")
-
+    raw_symbol = websocket.query_params.get("symbol") or symbol
+    sym = normalize_symbol(raw_symbol)
+    channel = f"realtime:funding_rate:{sym}" if sym else "realtime:funding_rate"
+    print(f"🔗 WebSocket connected: /ws/funding-rate channel={channel}")
+    await stream_channel_to_websocket(websocket, channel)
 
 @router.websocket("/ws/ticker")
-async def websocket_ticker(websocket: WebSocket):
+async def websocket_ticker(websocket: WebSocket, symbol: str = None):
     await websocket.accept()
-    print("🔗 WebSocket connected: /ws/ticker")
-    await stream_channel_to_websocket(websocket, "realtime:ticker")
+    raw_symbol = websocket.query_params.get("symbol") or symbol
+    sym = normalize_symbol(raw_symbol)
+    channel = f"realtime:ticker:{sym}" if sym else "realtime:ticker"
+    print(f"🔗 WebSocket connected: /ws/ticker channel={channel}")
+    await stream_channel_to_websocket(websocket, channel)
 
-
-# -----------------------------
 # Include router
-# -----------------------------
 app.include_router(router)
