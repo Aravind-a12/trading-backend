@@ -2,6 +2,7 @@ import logging
 import asyncio
 from datetime import datetime, timedelta
 import os
+import time
 import redis.asyncio as redis
 import json
 import decimal
@@ -82,6 +83,14 @@ async def publish_and_store(channel: str, redis_key: str, data: dict, score: flo
         await redis_client.zadd(redis_key, {json_data: score})
         await redis_client.publish(channel, json_data)
         print(f"✅ Published to {channel}: {data}")
+        # Trim old entries by time (configurable retention)
+        retention_seconds = int(os.getenv("RETENTION_SECONDS", "86400"))  # default 1 day
+        if retention_seconds > 0:
+            cutoff = int(time.time()) - retention_seconds
+            try:
+                await redis_client.zremrangebyscore(redis_key, 0, cutoff)
+            except Exception as trim_err:
+                print(f"⚠️ Trim error for {redis_key}: {trim_err}")
     except Exception as e:
         print(f"❌ Redis Error ({channel}): {e}")
 
