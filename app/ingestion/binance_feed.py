@@ -69,7 +69,7 @@ def floor_timestamp(timestamp: int, interval_name: str) -> int:
         return int(start_of_week.timestamp())
     elif interval_name in ['M', '1M']:
         # Floor to the first day of the month 00:00:00 UTC
-        start_of_month = datetime(year=dt.year, month=dt.month, day=1)
+        start_of_month = datetime(year=dt.year, month=dt.month, day=1) 
         return int(start_of_month.timestamp())
     else:
         # fallback: no flooring
