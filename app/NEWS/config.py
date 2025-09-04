@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Configuration module for PostgreSQL Telegram News Scraper
-Loads all configuration from environment variables
+Loads all configuration from environment variables ONLY
 """
 
 import os
@@ -10,27 +10,44 @@ from typing import List
 from dotenv import load_dotenv
 from pathlib import Path
 
-# Load environment variables from root .env file
+# Load environment variables from .env file
 config_path = Path(__file__).parent.parent.parent / '.env'
 load_dotenv(config_path)
 
 # ==================== TELEGRAM CONFIGURATION ====================
-TELEGRAM_API_ID = int(os.getenv('TELEGRAM_API_ID', '20865704'))
-TELEGRAM_API_HASH = os.getenv('TELEGRAM_API_HASH', '222577f4f67263a8e7934f7d73a8c139')
+TELEGRAM_API_ID = os.getenv('TELEGRAM_API_ID')
+if not TELEGRAM_API_ID:
+    raise ValueError("TELEGRAM_API_ID must be set in .env file")
+TELEGRAM_API_ID = int(TELEGRAM_API_ID)
+
+TELEGRAM_API_HASH = os.getenv('TELEGRAM_API_HASH')
+if not TELEGRAM_API_HASH:
+    raise ValueError("TELEGRAM_API_HASH must be set in .env file")
 
 # ==================== POSTGRESQL CONFIGURATION ====================
-PG_USER = os.getenv('PG_USER', 'postgres')
-PG_PASSWORD = os.getenv('PG_PASSWORD', 'bladeterminal')
+PG_USER = os.getenv('PG_USER')
+if not PG_USER:
+    raise ValueError("PG_USER must be set in .env file")
+
+PG_PASSWORD = os.getenv('PG_PASSWORD')
+if not PG_PASSWORD:
+    raise ValueError("PG_PASSWORD must be set in .env file")
+
 PG_HOST = os.getenv('PG_HOST', 'localhost')
 PG_PORT = os.getenv('PG_PORT', '5432')
 PG_DATABASE = os.getenv('PG_DATABASE', 'news_scraper')
 PG_CONNECTION_STRING = f"postgresql://{PG_USER}:{PG_PASSWORD}@{PG_HOST}:{PG_PORT}/{PG_DATABASE}"
 
 # ==================== GEMINI CONFIGURATION ====================
-GEMINI_API_KEY = os.getenv('GEMINI_API_KEY', 'AIzaSyAo39_I9tMfR0uViILfRiANj4qkDoUUOpU')
+GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
+if not GEMINI_API_KEY:
+    raise ValueError("GEMINI_API_KEY must be set in .env file")
 
 # ==================== BOT CONFIGURATION ====================
-BOT_TOKEN = os.getenv('BOT_TOKEN', '7658425897:AAExLPyyOoFQSiu7SqF8UkJNFtrBdaBxSa0')
+BOT_TOKEN = os.getenv('BOT_TOKEN')
+if not BOT_TOKEN:
+    raise ValueError("BOT_TOKEN must be set in .env file")
+
 CHANNEL_USERNAME = os.getenv('CHANNEL_USERNAME', '@BladeTerminalNews')
 
 # ==================== PROCESSING CONFIGURATION ====================
@@ -42,7 +59,9 @@ TIMEOUT_SECONDS = int(os.getenv('TIMEOUT_SECONDS', '30'))
 # ==================== SCRAPING CONFIGURATION ====================
 INITIAL_SCRAPE_HOURS = int(os.getenv('INITIAL_SCRAPE_HOURS', '3'))
 REAL_TIME_INTERVAL_MINUTES = int(os.getenv('REAL_TIME_INTERVAL_MINUTES', '30'))
-CHANNEL_USERNAMES = os.getenv('CHANNEL_USERNAMES', 'marketsAlpha,leviathan_news,infinityhedge,daytradingIG').split(',')
+
+CHANNEL_USERNAMES_STR = os.getenv('CHANNEL_USERNAMES', '')
+CHANNEL_USERNAMES = CHANNEL_USERNAMES_STR.split(',') if CHANNEL_USERNAMES_STR else []
 
 # ==================== DUPLICATE DETECTION CONFIGURATION ====================
 DUPLICATE_THRESHOLD = float(os.getenv('DUPLICATE_THRESHOLD', '0.85'))
@@ -51,8 +70,8 @@ DUPLICATE_CACHE_TTL = int(os.getenv('DUPLICATE_CACHE_TTL', '36000'))
 RATE_LIMIT_CACHE_TTL = int(os.getenv('RATE_LIMIT_CACHE_TTL', '30'))
 
 # ==================== BOT SENDING CONFIGURATION ====================
-BOT_SEND_INTERVAL_MINUTES = int(os.getenv('BOT_SEND_INTERVAL_MINUTES', '1'))  # Check every minute
-BOT_MAX_MESSAGES_PER_MINUTE = int(os.getenv('BOT_MAX_MESSAGES_PER_MINUTE', '20'))  # 20 messages per minute
+BOT_SEND_INTERVAL_MINUTES = int(os.getenv('BOT_SEND_INTERVAL_MINUTES', '1'))
+BOT_MAX_MESSAGES_PER_MINUTE = int(os.getenv('BOT_MAX_MESSAGES_PER_MINUTE', '20'))
 
 # ==================== SESSION CONFIGURATION ====================
 session_filename = os.getenv('SESSION_FILE', 'telegram_session.txt')
@@ -84,9 +103,9 @@ GEMINI_MODELS = [
 MODEL_CONFIGS = {model.name: model for model in GEMINI_MODELS}
 
 def get_config_summary() -> dict:
-    """Get a summary of current configuration"""
+    """Get a summary of current configuration (without exposing secrets)"""
     return {
-        "telegram_api_id": TELEGRAM_API_ID,
+        "telegram_api_id": "***" + str(TELEGRAM_API_ID)[-4:] if TELEGRAM_API_ID else "NOT SET",
         "postgres_database": PG_DATABASE,
         "postgres_host": PG_HOST,
         "gemini_models": len(GEMINI_MODELS),
