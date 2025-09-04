@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.routes import (
     trades, candles, open_interest, aggtrades, kline, exchangeinfo, account_bal,
-    all_orders, open_orders, position_info, trade_history, websocket ,order_manage # ✅ include websocket
+    all_orders, open_orders, position_info, trade_history, websocket ,order_manage, forex_calendar # ✅ include websocket
 )
 from app.routes.orderbook import router as orderbook_router
 from app.ingestion.user_stream import start_user_stream
@@ -36,6 +36,9 @@ app.include_router(order_manage.router, prefix="/api/order_manage")
 
 # ✅ Include WebSocket router
 app.include_router(websocket.router)
+
+# Include forex calendar router
+app.include_router(forex_calendar.router)
     
 @app.get("/")
 def root():
