@@ -2,14 +2,19 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.routes import (
     trades, candles, open_interest, aggtrades, kline, exchangeinfo, account_bal,
-    all_orders, open_orders, position_info, trade_history, websocket ,order_manage # ✅ include websocket
+    all_orders, open_orders, position_info, trade_history, websocket, order_manage,
+    auth, api_keys, exchanges, trading_data, advanced_orders, portfolio, risk_management  # ✅ Include new routes
 )
 from app.routes.orderbook import router as orderbook_router
 from app.ingestion.user_stream import start_user_stream
 import asyncio
 import os
 
-app = FastAPI()
+app = FastAPI(
+    title="Trading Backend API",
+    description="Backend API for trading platform with API key management",
+    version="1.0.0"
+)
 
 app.add_middleware(
     CORSMiddleware,
@@ -19,7 +24,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Include routers
+# Include existing routers
 app.include_router(trades.router, prefix="/api/trades")
 app.include_router(candles.router, prefix="/api/candles")
 app.include_router(open_interest.router, prefix="/api/open-interest")
@@ -34,12 +39,25 @@ app.include_router(position_info.router, prefix="/api/position_info")
 app.include_router(trade_history.router, prefix="/api/trade_history")
 app.include_router(order_manage.router, prefix="/api/order_manage")
 
+# ✅ Include new routers
+app.include_router(auth.router, prefix="/api/auth", tags=["Authentication"])
+app.include_router(api_keys.router, prefix="/api/keys", tags=["API Keys"])
+app.include_router(exchanges.router, prefix="/api/exchanges", tags=["Exchanges"])
+app.include_router(trading_data.router, prefix="/api/trading-data", tags=["Trading Data"])
+app.include_router(advanced_orders.router, prefix="/api/advanced-orders", tags=["Advanced Orders"])
+app.include_router(portfolio.router, prefix="/api/portfolio", tags=["Portfolio"])
+app.include_router(risk_management.router, prefix="/api/risk", tags=["Risk Management"])
+
 # ✅ Include WebSocket router
 app.include_router(websocket.router)
     
 @app.get("/")
 def root():
     return {"message": "Trading backend API is running 🚀"}
+
+@app.get("/health")
+def health_check():
+    return {"status": "healthy", "message": "Trading backend is operational"}
 
 @app.on_event("startup")
 async def on_startup():
